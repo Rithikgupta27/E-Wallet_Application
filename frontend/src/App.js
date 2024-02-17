@@ -1,43 +1,49 @@
-import React from 'react';
-// import Navbar from './components/Navbar';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/pages/Home';
-import AboutUs from './components/pages/AboutUs';
-import ContactUs from './components/pages/ContactUs';
-import SendMoney from './components/pages/SendMoney';
-import AddMoney from './components/pages/AddMoney';
-import PayBills from './components/pages/PayBills';
-import CheckBalance from './components/pages/CheckBalance';
-import AddBenificary from './components/pages/AddBenificary';
-import TransactionHistory from './components/pages/TransactionHistory';
-import Kyc from './components/pages/Kyc';
-import AddBankAccount from './components/pages/AddBankAccount';
-// import HomeAdmin from './components/AdminPages/HomeAdmin'
+import LandingPageComponent from './components/LandingPage/LandingPageComponent';
+import AuthComponent from './components/Auth/AuthComponent'
+import Home from './components/DashBoard/Pages/Home';
+import AboutUs from './components/DashBoard/Pages/AboutUs';
+import ContactUs from './components/DashBoard/Pages/ContactUs';
+import SendMoney from './components/DashBoard/Pages/SendMoney';
+import PayBills from './components/DashBoard/Pages/PayBills';
+import AddMoney from './components/DashBoard/Pages/AddMoney';
+import CheckBalance from './components/DashBoard/Pages/CheckBalance';
+import AddBenificary from './components/DashBoard/Pages/AddBenificary';
+import TransactionHistory from './components/DashBoard/Pages/TransactionHistory';
+import Kyc from './components/DashBoard/Pages/Kyc';
 
-function App() {
-  return (
-    <>
+import AddBankAccount from './components/DashBoard/Pages/AddBankAccount';
+import ProfilePage from './components/DashBoard/Pages/ProfilePage';
+
+const App = () => {
+  return (   
+    <div>
       <Router>
-        {/* <Navbar /> */}
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/about-us' component={AboutUs} />
-          <Route path='/contact-us' component={ContactUs} />
-          <Route path='/send-money' component={SendMoney} />
-          <Route path='/pay-bills' component={PayBills} />
-          <Route path='/add-money' component={AddMoney} />
-          <Route path='/check-balance' component={CheckBalance} />
-          <Route path='/add-benificary' component={AddBenificary} />
-          <Route path='/transaction-history' component={TransactionHistory} />
-          <Route path='/kyc' component={Kyc} />
-          <Route path='/add-bank-account' component={AddBankAccount} />
-           
-        </Switch>
-        
+        <Routes>
+          <Route path="/" exact element={<LandingPageComponent />} />
+          <Route path="/auth" element={<AuthComponent />} />
+          <Route path='/dashboard' element={<Home />} />
+          <Route path='/about-us' element={<AboutUs />} />
+          <Route path='/contact-us' element={<ContactUs />} />
+          <Route path='/send-money' element={<SendMoney />} />
+          <Route path='/pay-bills' element={<PayBills />} />
+          <Route path='/add-money' element={<AddMoney />} />
+          <Route path='/check-balance' element={<CheckBalance />} />
+          <Route path='/add-benificary' element={<AddBenificary />} />
+          <Route path='/transaction-history' element={<TransactionHistory />} />
+          <Route path='/kyc' element={<Kyc />} />
+          <Route path='/profile' element={<ProfilePage/>}/>
+          <Route path='/add-bank-account' element={<AddBankAccount />} /> 
+        </Routes>
       </Router>
-      </>
-  );
+    </div>
+
+
+  )
 }
 
-export default App;
+export default App
+
+
