@@ -1,0 +1,45 @@
+/* FormStyles.css */
+.divFlex{
+   display: flex;
+   justify-content: space-evenly;
+}
+.styled-form {
+    
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 0 10px black;
+    border: 2px solid black;
+    margin: 0 auto; /* Center the form */
+  
+    @media (max-width: 400px) {
+      width: 90%;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+  
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+  
+    button {
+      background-color: #cfc8c8;
+      color: #343434;
+      padding: 10px;
+      border: black;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+  
+    }
+    button :hover {
+        background-color: rgb(246, 249, 249);
+    }
+}
+  
