@@ -8,6 +8,18 @@ const RegistrationForm = ({ signUpData, switchToLoginForm }) => {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  function softHash(inputString) {
+    let hash = 0;
+    for (let i = 0; i < inputString.length; i++) {
+      hash = (hash << 5) - hash + inputString.charCodeAt(i);
+      hash |= 0;
+    }
+    let hashString = hash.toString();
+    hashString = hashString.slice(0, 15);
+  
+    return hashString;
+  }
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
   }
@@ -101,6 +113,7 @@ const RegistrationForm = ({ signUpData, switchToLoginForm }) => {
       // Create JSON object to send to backend
       const userData = {
           ...registrationData,
+          password: softHash(registrationData.password),
           wallet: {
               walletId: walletId,
               balance: 1,

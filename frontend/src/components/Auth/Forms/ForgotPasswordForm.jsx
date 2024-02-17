@@ -11,6 +11,18 @@ const ForgotPasswordForm = ({ switchToLoginForm, switchToSignUp }) => {
     const [errorMessageOTP, setErrorMessageOTP] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
   
+    function softHash(inputString) {
+      let hash = 0;
+      for (let i = 0; i < inputString.length; i++) {
+        hash = (hash << 5) - hash + inputString.charCodeAt(i);
+        hash |= 0;
+      }
+      let hashString = hash.toString();
+      hashString = hashString.slice(0, 15);
+    
+      return hashString;
+    }
+
     const handleMobileNumberChange = (e) => {
       setMobileNumber(e.target.value);
     };
@@ -69,7 +81,7 @@ const ForgotPasswordForm = ({ switchToLoginForm, switchToSignUp }) => {
       if(otp === localStorage.getItem('otp')){
         setSuccessMessage("Verified")
         try{
-          const response = await AuthService.updatePassword(mobileNumber, newPassword);
+          const response = await AuthService.updatePassword(mobileNumber, softHash(newPassword));
           console.log(response);
           switchToLoginForm();
         } catch (error) {

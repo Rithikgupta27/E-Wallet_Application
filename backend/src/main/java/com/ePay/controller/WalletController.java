@@ -50,7 +50,7 @@ public class WalletController {
 		return new ResponseEntity<Wallet>(wallet, HttpStatus.OK);
 	}
 
-	@PostMapping("/addMoney/{sourceMobileNo}/{targetMobileNo}/{amount}/{uniqueId}")
+	@PostMapping("/sendMoney/{sourceMobileNo}/{targetMobileNo}/{amount}/{uniqueId}")
 	public ResponseEntity<Wallet> transferToBank(@PathVariable String sourceMobileNo,
 			@PathVariable String targetMobileNo, @PathVariable Long amount, @PathVariable String uniqueId) {
 		Wallet wallet = walletService.fundTransfer(sourceMobileNo, targetMobileNo, amount, uniqueId);

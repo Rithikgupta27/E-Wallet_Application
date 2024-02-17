@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import AccountService from '../../../services/DashBoard/AccountService';
 import './Form.css';
+import axios from '../../../services/API/axios'
 
 const AddAccountForm = () => {
-    const [bankAccount, setBankAccount] = useState("");
+    const [accountNo, setAccountNo] = useState("");
     const [ammount, setAmmount] = useState(0);
     const [ifsc, setIfsc] = useState("");
     const [bankName, setBankName] = useState("")
     const [errorMessage, setErrorMessage] = useState('');
     
     const changedBankAccount = (events) =>{
-        setBankAccount(events.target.value);
+        setAccountNo(events.target.value);
     }
     const changedIfsc = (events) =>{
         setIfsc(events.target.value);
@@ -18,8 +18,21 @@ const AddAccountForm = () => {
     const changedBankName = (events) =>{
         setBankName(events.target.value);
     }
+
+    const addAccount = (accountNo, bankName, ifsc, amount, uniqueId) => {
+      return axios.post(`/bankaccount/${uniqueId}`, {
+        accountNo, bankName, ifsc, amount
+      })
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        throw error;
+      });
+    }
+
     const clickSubmit = (events) =>{
-      if (!bankAccount || !bankName || !ifsc ){
+      if (!accountNo || !bankName || !ifsc ){
         setErrorMessage("All fields are mandatory ..");
       }
       // validattions 
@@ -30,11 +43,11 @@ const AddAccountForm = () => {
       try{
         // call service method
         const uniqueId = localStorage.getItem('uniqueId');
-        const response = AccountService.addAcccount(bankAccount, bankName, ifsc, ammount, uniqueId);
-        console.log(response.data);
+        console.log(accountNo, bankName, ifsc, ammount, uniqueId);
+        addAccount(accountNo, bankName, ifsc, ammount, uniqueId);
 
       } catch(error){
-        console.log(error);
+        // console.log(error);
         setErrorMessage("Failed to Add Bank Account");
       }
     }
@@ -48,7 +61,7 @@ const AddAccountForm = () => {
          <label >Bank Name:</label>
          <input type="text" id="bankname" name="bankname" required  onChange={changedBankName} placeholder='Bank Abbreviation'/>
          <label >BankAccount:</label>
-         <input type="text" id="bankAccount" name="bankAccount" required  onChange={changedBankAccount} placeholder='Enter Bank Account'/>
+         <input type="text" id="accountNo" name="accountNo" required  onChange={changedBankAccount} placeholder='Enter Bank Account'/>
          <label >IFSC CODE:</label>
          <input type="text" id="ifsc" name="ifsc" required  onChange={changedIfsc} placeholder='Enter Ifsc Code'/>
 

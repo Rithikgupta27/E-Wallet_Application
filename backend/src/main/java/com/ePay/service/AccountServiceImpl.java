@@ -36,29 +36,15 @@ public class AccountServiceImpl implements AccountService {
 		CustomerSession session = csDao.checkCustomerSession(uniqueId);
 
 		if (session != null) {
-			Optional<Customer> opt = cDao.findById(session.getId());
+			Optional<Customer> opt = cDao.findById(session.getCustomerId());
 			Customer customer = opt.get();
 
-			List<BankAccount> banks = customer.getWallet().getBanks();
-
-			boolean flag = false;
-			for (BankAccount bank : banks) {
-				if (bank.getAccountNo().equals(Account.getAccountNo())) {
-					flag = true;
-				}
-			}
-
-			// return desired bank account
-			if (!flag) {
-				// associate wallet
-				Account.setWallet(customer.getWallet());
-				// add bank account
-				customer.getWallet().getBanks().add(Account);
-				cDao.save(customer);
-				return customer;
-			} else {
-				throw new CustomerException("Bank Account alread exist");
-			}
+			System.out.println(Account.getAccountNo());
+			Account.setWallet(customer.getWallet());
+			// add bank account
+			customer.getWallet().getBanks().add(Account);
+			cDao.save(customer);
+			return customer;
 
 		} else {
 			throw new CustomerException("Customer not logged in");
@@ -134,11 +120,11 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Customer showBalance(String mobileNo) {
+	public String showBalance(String mobileNo) {
 		Customer customer = cDao.findByMobileNumber(mobileNo);
 		if (customer != null) {
 			// prashant
-			return customer;
+			return customer.getWallet().getBalance().toString();
 		} else {
 			throw new CustomerException("No customer found with mobile number " + mobileNo);
 		}

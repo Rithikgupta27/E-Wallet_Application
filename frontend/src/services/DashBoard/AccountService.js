@@ -2,16 +2,19 @@ import axios from "../API/axios";
 
 const AccountService = {
     // add bank account
-  addBeneficiary: async (bname, mobile, relation, uniqueId) => {
-    try {
-      const response = await axios.post(`/beneficiary/${uniqueId}`, {
-        bname, mobile, relation
+    addAccount: (bankAccount, bankName, ifsc, amount, uniqueId) => {
+      return axios.post(`/bankaccount/${uniqueId}`, {
+        bankAccount, bankName, ifsc, amount
+      })
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        throw error;
       });
-      return response;
-    } catch (error) {
-      throw error;
     }
-  },
+    
+    
   
 
   

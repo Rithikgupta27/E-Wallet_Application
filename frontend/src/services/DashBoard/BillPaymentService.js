@@ -1,11 +1,21 @@
 import axios from "../API/axios";
 
 const BillPaymentService = {
-  addBeneficiary: async (bname, mobile, relation, uniqueId) => {
+  getAllBills: async (uniqueId) => {
     try {
-      const response = await axios.post(`/beneficiary/${uniqueId}`, {
-        bname, mobile, relation
+      const response = await axios.get(`/paidBills/${uniqueId}`, {
       });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+  addBill: async (billType, amount, billDescription, uniqueId) => {
+    try {
+      const response = await axios.post(`/billpayment/${uniqueId}`, {
+        billType, amount, billDescription
+      });
+      console.log(response.data);
       return response;
     } catch (error) {
       throw error;

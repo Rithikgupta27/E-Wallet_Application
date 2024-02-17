@@ -1,0 +1,31 @@
+.table-container {
+    text-align: center;
+  }
+  
+  .custom-table {
+    width: 100%; /* Change width to 100% for responsiveness */
+    margin: auto;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th, .custom-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .custom-table th {
+    background-color: #f2f2f2; /* Grey background */
+    color: #333; /* Text color */
+  }
+  
+  /* Media Query for Tablets and Smaller Screens */
+  @media (max-width: 768px) {
+    .custom-table {
+      width: 100%; /* Adjust width for smaller screens */
+    }
+  
+    .custom-table th, .custom-table td {
+      padding: 6px; /* Adjust padding for smaller screens */
+    }
+  }
+  

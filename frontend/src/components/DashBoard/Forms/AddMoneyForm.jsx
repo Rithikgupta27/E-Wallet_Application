@@ -15,10 +15,9 @@ const AddMoneyForm = (props) => {
       if (!amount || !bankAccount){
         setErrorMessage("All fields are mandatory..");
       }
-        e.preventDefault();  
-         // call a service method for backend req
-         props.sendBankAccount(amount); 
-         props.sendAmount(bankAccount); 
+      e.preventDefault();  
+        // call a service method for backend req
+      
 
     }
   return (
