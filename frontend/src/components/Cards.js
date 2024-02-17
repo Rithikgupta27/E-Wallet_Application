@@ -1,0 +1,82 @@
+import React from 'react';
+import './Cards.css';
+import CardItem from './CardItem';
+
+function Cards() {
+  return (
+    <div className='cards' >
+      <h1>Check out our services</h1>
+      <div className='cards__container'>
+        <div className='cards__wrapper'>
+          {/* <ul className='cards__items'>
+            <CardItem
+              src='images/img-9.jpg'
+              text='Our expert technicians will inspect your car and ensure that the best car service is provided to you.'
+              label='ROUTINE CHECK-UP'
+              path='/services'
+            />
+            <CardItem
+              src='images/img-2.jpg'
+              text='Vehicle diagnosis by our expert'
+              label='DIAGNOSIS'
+              path='/services'
+            />
+          </ul> */}
+          <ul className='cards__items'>
+            <CardItem
+              src='images/send.png'
+              text='SEND MONEY' 
+              path='/send-money'
+            />
+             <CardItem
+              src='images/paybill.png'
+              text='PAY BILLS'             
+              path='/pay-bills'
+            />
+            <CardItem
+              src='images/addMoney.png'
+              text='ADD MONEY'
+              // label='ADD MONEY'
+              path='/add-money'
+            />
+            <CardItem
+              src='images/checkbalance.png'
+              text='CHECK BALANCE'
+              // label='CHECK BALANCE'
+              path='/check-balance'
+            />
+          </ul>
+          <ul className='cards__items'>
+            <CardItem
+              src='images/benificary.png'
+              text='ADD BENIFICARY '               
+              // label='KYC AND ADD BENIFICARY'
+              path='/add-benificary'
+            />
+
+            
+            <CardItem
+              src='images/transaction.png'
+              text=' TRANSACTION HISTORY'
+              path='/transaction-history'
+            />
+
+            <CardItem
+              src='images/kyc.png'
+              text='KYC'             
+              path='/kyc'
+            />
+            <CardItem
+              src='images/bank.png'
+              text='ADD BANK ACCOUNT'
+              // label='ADD BANK BALANCE'
+              path='/add-bank-account'
+            />
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Cards;
