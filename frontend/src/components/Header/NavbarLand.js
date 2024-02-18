@@ -69,7 +69,7 @@ function NavbarLand() {
               className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
-                
+                LogIn
               </Link>
             </li>
           {button && <ButtonLogin buttonStyle='btn--outline'>LogIn</ButtonLogin>}

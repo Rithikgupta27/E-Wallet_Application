@@ -10,7 +10,7 @@ function Home() {
   return (
     <div style={{backgroundColor:"grey"}}>
     <Navbar />
-    <Scroller/>
+    {/* <Scroller/> */}
       {/* <HeroSection /> */}
     <Cards />
     <Footer />

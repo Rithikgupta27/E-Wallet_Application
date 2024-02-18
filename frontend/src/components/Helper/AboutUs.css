@@ -1,0 +1,8 @@
+.flexing{
+    display: flex;
+    justify-content: space-evenly;
+}
+.texts{
+    font-size: medium;
+    padding: 10px;
+}
