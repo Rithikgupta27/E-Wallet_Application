@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.ePay.exception.CustomerException;
 import com.ePay.model.Customer;
 import com.ePay.model.CustomerSession;
+import com.ePay.model.Wallet;
+import com.ePay.model.DTO.CustomerDTO;
 import com.ePay.model.DTO.CustomerLoginDTO;
 import com.ePay.model.DTO.CustomerOtpDTO;
 import com.ePay.repository.CustomerDao;
@@ -34,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
 			String randomString = String.valueOf((int) (Math.random() * 10000));
 			return randomString;
 		} else {
-			throw new CustomerException("Customer already registered, try Logging in");
+			throw new CustomerException("Customer not registered, try Signing in");
 		}
 
 	}
@@ -116,14 +118,38 @@ public class CustomerServiceImpl implements CustomerService {
 			return null;
 		}
 	}
+//	@Override
+//	public CustomerDTO viewCustomerDetails(String uniqueId) {
+//	    CustomerSession cSession = csDao.findByUniqueId(uniqueId);
+//	    if (cSession != null) {
+//	        Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
+//	        if (opt.isPresent()) {
+//	            CustomerDTO customerDTO = // convert Customer to CustomerDTO
+//	            return customerDTO;
+//	        } else {
+//	            throw new CustomerException("Customer details not found");
+//	        }
+//	    } else {
+//	        throw new CustomerException("User must be logged in");
+//	    }
+//	}
 
 	@Override
-	public Customer viewCustomerDetails(String UniqueId) {
+	public CustomerDTO viewCustomerDetails(String UniqueId) {
 		CustomerSession cSession = csDao.findByUniqueId(UniqueId);
 		if (cSession != null) {
 			Optional<Customer> opt = cDao.findById(cSession.getId());
 			Customer customer = opt.get();
-			return customer;
+			CustomerDTO customerDTO = new CustomerDTO();
+			customerDTO.setFirstName(customer.getFirstName());
+			customerDTO.setLastName(customer.getLastName());
+			customerDTO.setMobileNumber(customer.getMobileNumber());
+			customerDTO.setGender(customer.getGender());
+			customerDTO.setDob(customer.getDob());
+
+			Wallet wallet = customer.getWallet();
+			customer.setWallet(wallet);
+			return customerDTO;
 		} else {
 			throw new CustomerException("User must be logged in!");
 		}

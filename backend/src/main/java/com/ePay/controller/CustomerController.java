@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ePay.model.Customer;
+import com.ePay.model.DTO.CustomerDTO;
 import com.ePay.model.DTO.CustomerLoginDTO;
 import com.ePay.model.DTO.CustomerOtpDTO;
 import com.ePay.service.CustomerService;
@@ -62,9 +63,9 @@ public class CustomerController {
 	}
 
 	@GetMapping("/customer/{uniqueId}")
-	public ResponseEntity<Customer> viewCustomerDetailsHandler(@PathVariable("uniqueId") String uniqueId) {
-		Customer newCustomer = cService.viewCustomerDetails(uniqueId);
-		return new ResponseEntity<Customer>(newCustomer, HttpStatus.ACCEPTED);
+	public ResponseEntity<CustomerDTO> viewCustomerDetailsHandler(@PathVariable("uniqueId") String uniqueId) {
+		CustomerDTO newCustomer = cService.viewCustomerDetails(uniqueId);
+		return new ResponseEntity<CustomerDTO>(newCustomer, HttpStatus.ACCEPTED);
 	}
 
 }

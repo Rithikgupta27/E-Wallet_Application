@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.ePay.model.Customer;
 import com.ePay.model.CustomerSession;
+import com.ePay.model.DTO.CustomerDTO;
 import com.ePay.model.DTO.CustomerLoginDTO;
 import com.ePay.model.DTO.CustomerOtpDTO;
 
@@ -17,7 +18,7 @@ public interface CustomerService {
 
 	public CustomerSession checkCustomerSession(String UniqueId);
 
-	public Customer viewCustomerDetails(String UniqueId);
+	public CustomerDTO viewCustomerDetails(String UniqueId);
 
 	public String updateCustomerPassword(CustomerLoginDTO customerDto);
 
