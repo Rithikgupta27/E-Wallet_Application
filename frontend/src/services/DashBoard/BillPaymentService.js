@@ -1,21 +1,33 @@
-import React from 'react';
-import axios from 'axios';
-const BillPaymentService = () => {
-    const payBill = ({billInput}) =>{
-    const uniqueId = localStorage.getItem('uniqueId');
-    axios.post(`http://localhost:8080/beneficiary/${uniqueId}`, billInput)
-        .then((response) => {
-            console.log(response.data);
-        })
-        .catch((error) => {
-            console.error('Error adding bill payment:', error);
-        });}
+import axios from "../API/axios";
 
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const BillPaymentService = {
+  getAllBills: async (uniqueId) => {
+    try {
+      const response = await axios.get(`/paidBills/${uniqueId}`, {
+      });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+  addBill: async (billType, amount, billDescription, uniqueId) => {
+    try {
+      if (!billDescription){
+        billDescription = `${billType} of ${amount}Rs is paid`;
+      }
+      const response = await axios.post(`/billpayment/${uniqueId}`, {
+        billType, amount, billDescription
+      });
+      console.log(response.data);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+  
 
-export default BillPaymentService
+  
+
+};
+
+export default BillPaymentService;

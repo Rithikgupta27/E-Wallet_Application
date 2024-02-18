@@ -1,6 +1,7 @@
 import React from 'react';
 import './Button.css';
 import { Link } from 'react-router-dom';
+import AuthService from '../../services/Auth/AuthService';
 
 const STYLES = ['btn--primary', 'btn--outline', 'btn--test'];
 
@@ -17,7 +18,6 @@ const SIZES = ['btn--medium', 'btn--large'];
 export const ButtonLogout = ({
   children,
   type,
-  onClick,
   path = '/auth',
   buttonStyle,
   buttonSize
@@ -28,11 +28,17 @@ export const ButtonLogout = ({
 
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
+  const logoutUser = () =>{
+    const uniqueId = localStorage.getItem('uniqueId')
+    AuthService.logoutUser(uniqueId);
+    
+  }
+
   return (
     <Link to={`${path}`} className='btn-mobile'>
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-        onClick={onClick}
+        onClick={logoutUser}
         type={type}
       >
         {children}

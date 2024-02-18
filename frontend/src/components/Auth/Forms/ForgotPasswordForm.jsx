@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import AuthService from '../../../services/Auth/AuthService';
 
-const ForgotPasswordForm = ({ switchToLoginForm }) => {
+const ForgotPasswordForm = ({ switchToLoginForm, switchToSignUp }) => {
     const [mobileNumber, setMobileNumber] = useState('');
     const [otp, setOtp] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -11,6 +11,18 @@ const ForgotPasswordForm = ({ switchToLoginForm }) => {
     const [errorMessageOTP, setErrorMessageOTP] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
   
+    function softHash(inputString) {
+      let hash = 0;
+      for (let i = 0; i < inputString.length; i++) {
+        hash = (hash << 5) - hash + inputString.charCodeAt(i);
+        hash |= 0;
+      }
+      let hashString = hash.toString();
+      hashString = hashString.slice(0, 15);
+    
+      return hashString;
+    }
+
     const handleMobileNumberChange = (e) => {
       setMobileNumber(e.target.value);
     };
@@ -69,7 +81,7 @@ const ForgotPasswordForm = ({ switchToLoginForm }) => {
       if(otp === localStorage.getItem('otp')){
         setSuccessMessage("Verified")
         try{
-          const response = await AuthService.updatePassword(mobileNumber, newPassword);
+          const response = await AuthService.updatePassword(mobileNumber, softHash(newPassword));
           console.log(response);
           switchToLoginForm();
         } catch (error) {
@@ -132,6 +144,9 @@ const ForgotPasswordForm = ({ switchToLoginForm }) => {
           </div>
           {errorMessage && <div className="text-red-500 mb-2">{errorMessage}</div>}
           <button onClick={handleSubmit} className="w-full text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+          <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+            Don't have an account yet? <a onClick={switchToSignUp} className="font-medium text-blue-600 hover:underline dark:text-primary-500">Sign up</a>
+          </p>
         </div>  
       </div>
     );

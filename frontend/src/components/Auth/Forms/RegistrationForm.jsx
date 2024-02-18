@@ -8,6 +8,18 @@ const RegistrationForm = ({ signUpData, switchToLoginForm }) => {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  function softHash(inputString) {
+    let hash = 0;
+    for (let i = 0; i < inputString.length; i++) {
+      hash = (hash << 5) - hash + inputString.charCodeAt(i);
+      hash |= 0;
+    }
+    let hashString = hash.toString();
+    hashString = hashString.slice(0, 15);
+  
+    return hashString;
+  }
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
   }
@@ -101,6 +113,7 @@ const RegistrationForm = ({ signUpData, switchToLoginForm }) => {
       // Create JSON object to send to backend
       const userData = {
           ...registrationData,
+          password: softHash(registrationData.password),
           wallet: {
               walletId: walletId,
               balance: 1,
@@ -125,7 +138,7 @@ const RegistrationForm = ({ signUpData, switchToLoginForm }) => {
 };
 
   return (
-    <div className="w-full bg-white text-black rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full bg-white text-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
             Registration form

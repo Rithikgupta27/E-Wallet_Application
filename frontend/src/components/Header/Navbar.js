@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../Helper/Button';
 import { Link } from 'react-router-dom';
+import AuthService from '../../services/Auth/AuthService';
 import './Navbar.css';
-import { ButtonProfile } from '../Helper/ButtonProfile';
+import { ButtonLogout } from '../Helper/ButtonLogout';
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  // const [userName, setUserName] = useState('User');
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -19,7 +21,31 @@ function Navbar() {
     }
   };
 
+  const logoutUser = () =>{
+    const uniqueId = localStorage.getItem('uniqueId')
+    try{
+      AuthService.logoutUser(uniqueId);
+    }catch (error){
+      alert("Logout failed. Please try again later.")
+    }
+  }
+
+  // const fetchUserName = () => {
+  //   const uniqueId = localStorage.getItem('uniqueId');
+  //   console.log(uniqueId)
+  //   if(uniqueId){
+  //     try{
+  //       const response = CustomerService.getCustomerDetails(uniqueId);
+  //       console.log(response);
+  //       setUserName(response.data.firstName);
+  //     } catch (error){
+  //       console.log('navbar fetch UserName:' + error);
+  //     }
+  //   }
+  // }
+
   useEffect(() => {
+    // fetchUserName();
     showButton();
   }, []);
 
@@ -31,7 +57,7 @@ function Navbar() {
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             ePay
-            {/* <i class='fab fa-typo3' /> */}
+            {/* <i className='fab fa-typo3' /> */}
            
             
           </Link>
@@ -63,17 +89,36 @@ function Navbar() {
               </Link>
             </li>
 
+            {/* <li className='nav-item'>
+              <Link
+                to='/dashboard'
+                className='nav-links'
+              >
+                Welcome, {userName}
+              </Link>
+            </li> */}
+            {/* responsive text links */}
             <li>
               <Link
-                to='/profile'
+                to='/user-profile'
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
                 Profile
               </Link>
             </li>
+            <li>
+              <Link
+                to='/auth'
+                className='nav-links-mobile'
+                onClick={logoutUser}
+              >
+                Logout
+              </Link>
+            </li>
           </ul>
-          {button && <ButtonProfile buttonStyle='btn--outline'>Profile</ButtonProfile>}
+          {button && <Button buttonStyle='btn--outline'>Profile</Button>}
+          {button && <ButtonLogout buttonStyle='btn--outline'>Logout</ButtonLogout>}
         </div>
       </nav>
     </>

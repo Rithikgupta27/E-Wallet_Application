@@ -40,9 +40,9 @@ h1 {
   -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
   filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
   border-radius: 25px;
-  border:2px solid rgb(3, 3, 3);
+  border:2px solid black;
   overflow: hidden;
-  background: #0d6f78;
+  background: #7b7777;
   text-decoration: none;
 }
 
@@ -93,11 +93,11 @@ h1 {
 
 .cards__item__info {
   padding: 20px 30px 30px;
-  background: #0d6f78;
+  background: #7b7777;
 }
 
 .cards__item__text {
-  color: #eaeaea;
+  color: #252e48;
   font-size: 18px;
   line-height: 24px;
   display:flex;
@@ -105,7 +105,7 @@ h1 {
 }
 .cards__item__text:hover {
   transform: scale(1.1) ;
-  color:rgb(4, 4, 4);
+  color:rgb(91, 91, 201);
 }
 
 @media only screen and (min-width: 1200px) {

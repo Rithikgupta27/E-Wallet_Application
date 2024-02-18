@@ -1,13 +1,14 @@
 import React from 'react'
 import Navbar from '../../Header/Navbar'
 import Footer from '../../Footer/Footer'
+import TransactionTable from '../Tables/TransactionTable'
 
 const TransactionHistory = () => {
   return (
     <div>
-      <Navbar/>
-      <h1 >Transaction history</h1>
-      <Footer/>
+    <Navbar/>
+    <TransactionTable/>
+    <Footer/>
     </div>
   )
 }

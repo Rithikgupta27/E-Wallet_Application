@@ -13,9 +13,7 @@ import CheckBalance from './components/DashBoard/Pages/CheckBalance';
 import AddBenificary from './components/DashBoard/Pages/AddBenificary';
 import TransactionHistory from './components/DashBoard/Pages/TransactionHistory';
 import Kyc from './components/DashBoard/Pages/Kyc';
-
 import AddBankAccount from './components/DashBoard/Pages/AddBankAccount';
-import ProfilePage from './components/DashBoard/Pages/ProfilePage';
 
 const App = () => {
   return (   
@@ -34,7 +32,6 @@ const App = () => {
           <Route path='/add-benificary' element={<AddBenificary />} />
           <Route path='/transaction-history' element={<TransactionHistory />} />
           <Route path='/kyc' element={<Kyc />} />
-          <Route path='/profile' element={<ProfilePage/>}/>
           <Route path='/add-bank-account' element={<AddBankAccount />} /> 
         </Routes>
       </Router>

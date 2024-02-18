@@ -40,7 +40,7 @@ const FormComponent = () => {
         currentComponent = <RegistrationForm signUpData={signUpData} switchToLoginForm={switchToLoginForm} />;
         break;
       case 'forgotPassword':
-        currentComponent = <ForgotPasswordForm switchToLoginForm={switchToLoginForm} />;
+        currentComponent = <ForgotPasswordForm switchToLoginForm={switchToLoginForm} switchToSignUp={switchToSignUp} />;
         break;
       default:
         currentComponent = null;
