@@ -20,13 +20,13 @@ const PayBillForm = () => {
         setBillDescription(event.target.value);
     };
 
-    const billInput = { billType, amount, billDescription };
+    const billInput = { amount, billDescription, billType, };
 
     const uniqueId = localStorage.getItem('uniqueId');
     const clickSubmit = (event) => {
         event.preventDefault();
         console.log(billInput);
-        axios.post(`http://localhost:8080/paidBills/9TCQXH0r`, billInput)
+        axios.post(`http://localhost:8080/paidBills/${uniqueId}`, billInput)
             .then((response) => {
                 console.log(response.data);
             })

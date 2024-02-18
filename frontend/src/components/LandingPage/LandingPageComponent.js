@@ -5,6 +5,7 @@ import Scroller from '../Helper/Scroller';
 // import Cards from '../Helper/Cards';
 import HeroSection from '../Helper/HeroSection';
 import Footer from '../Footer/Footer';
+import LandingPageCards from '../Helper/LandingPageCards';
 
 
 function LandingPageComponent() {
@@ -14,7 +15,8 @@ function LandingPageComponent() {
       
       <Scroller/>
       {/* <h2>hellloooo</h2> */}
-      <HeroSection/>
+      <LandingPageCards/>
+      {/* <HeroSection/> */}
       {/* <Cards /> */}
       <Footer />
     </div>

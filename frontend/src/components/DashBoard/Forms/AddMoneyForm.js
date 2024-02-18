@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Form.css'
+import axios from '../../../services/API/axios';
 const AddMoneyForm = (props) => {
     const [bankAccount,setBankAccount] = useState("");
     const [amount,setAmount] = useState(0);
@@ -10,12 +11,23 @@ const AddMoneyForm = (props) => {
     const changedBankAccount = (events) =>{
         setBankAccount(events.target.value);
     }
+     const BankId = bankAccount;
+    const uniqueId = localStorage.getItem('uniqueId')
     const submitHandler = (events) =>{
          events.preventDefault();  
         //  props.sendBankAccount(amount); 
-        //  props.sendAmount(bankAccount); 
+        //  props.sendAmount(bankAccount);
+        axios.post(`/addMoney/${BankId}/${amount}/${uniqueId}`).then(response=>{
+          console.log(response.data);
+        }) ,(error)=>{
+          console.log(error);
+        }
 
     }
+
+
+
+
   return (
     <div>
       <form className="styled-form" onSubmit={submitHandler} >

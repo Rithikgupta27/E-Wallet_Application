@@ -5,18 +5,18 @@ const Table = ({ beneficiaries }) => {
     <div className="table-container">
       <table className="custom-table">
         <tr>
-          <th>Name</th>
-          <th>Mobile No.</th>
+          {/* <th></th> */}
+          <th>Bill Type</th>
           <th>Relation</th>
           <th>Remove beneficiary</th>
         </tr>
         {beneficiaries.length > 0 ? (
           beneficiaries.map((item) => (
-            <tr key={item.bid}>
-              <td>{item.name}</td>
-              <td>{item.mobileNo}</td>
-              <td>{item.relation}</td>
-              <td>Button</td>
+            <tr key={item.billId}>
+              <td>{item.billType}</td>
+              <td>{item.paymentDate}</td>
+              <td>{item.amount}</td>
+              
             </tr>
           ))
         ) : (
