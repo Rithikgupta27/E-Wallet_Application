@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect, useState } from 'react'
 import './Form.css'
 import axios from '../../../services/API/axios';
@@ -25,7 +26,14 @@ const SendMoneyForm = () => {
       setErrorMessage("Can't transfer to the same number");
       return;
     }
-
+    if (!recieverMobileNo || recieverMobileNo.length !== 10) {
+      setErrorMessage('Invalid mobile number');
+      return;
+    }
+    if (amount == 0) {
+      setErrorMessage('amount cannot be zero');
+      return;
+    }
     const uniqueId = localStorage.getItem('uniqueId');
     try {
         const response = await axios.post(`/sendMoney/${sourceMobileNo}/${recieverMobileNo}/${amount}/${uniqueId}`);
@@ -46,7 +54,10 @@ const clickSubmit = async (event) => {
         setAmount('');
         setRecieverMobileNo('');
     } catch (error) {
-        setErrorMessage("Insufficient balance.");
+      setErrorMessage("Invalid transaction or Insufficient balance.");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     }
 }
 
