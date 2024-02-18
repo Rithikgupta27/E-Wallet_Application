@@ -65,6 +65,7 @@ public class CustomerController {
 	@GetMapping("/customer/{uniqueId}")
 	public ResponseEntity<CustomerDTO> viewCustomerDetailsHandler(@PathVariable("uniqueId") String uniqueId) {
 		CustomerDTO newCustomer = cService.viewCustomerDetails(uniqueId);
+		System.out.println(newCustomer.toString());
 		return new ResponseEntity<CustomerDTO>(newCustomer, HttpStatus.ACCEPTED);
 	}
 

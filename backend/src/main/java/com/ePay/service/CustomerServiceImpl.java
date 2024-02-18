@@ -13,6 +13,7 @@ import com.ePay.model.Wallet;
 import com.ePay.model.DTO.CustomerDTO;
 import com.ePay.model.DTO.CustomerLoginDTO;
 import com.ePay.model.DTO.CustomerOtpDTO;
+import com.ePay.model.DTO.WalletDTO;
 import com.ePay.repository.CustomerDao;
 import com.ePay.repository.CustomerSessionDao;
 
@@ -72,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		if (customer != null) {
 			CustomerSession cs = new CustomerSession();
-			cs.setCustomer(customer);
+			cs.setCustomerId(customer.getCustomerId());
 			cs.setTimeStamp(LocalDateTime.now());
 			String key = RandomString.make(8);
 			cs.setUniqueId(key);
@@ -111,6 +112,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerSession checkCustomerSession(String uniqueId) {
+		System.out.println(uniqueId);
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
 			return cSession;
@@ -138,7 +140,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public CustomerDTO viewCustomerDetails(String UniqueId) {
 		CustomerSession cSession = csDao.findByUniqueId(UniqueId);
 		if (cSession != null) {
-			Optional<Customer> opt = cDao.findById(cSession.getId());
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer customer = opt.get();
 			CustomerDTO customerDTO = new CustomerDTO();
 			customerDTO.setFirstName(customer.getFirstName());
@@ -148,7 +150,12 @@ public class CustomerServiceImpl implements CustomerService {
 			customerDTO.setDob(customer.getDob());
 
 			Wallet wallet = customer.getWallet();
-			customer.setWallet(wallet);
+			WalletDTO walletDTO = new WalletDTO();
+			walletDTO.setWalletId(wallet.getWalletId());
+			walletDTO.setKycStatus(wallet.isKycStatus());
+			walletDTO.setBalance(wallet.getBalance());
+
+			customerDTO.setWallet(walletDTO);
 			return customerDTO;
 		} else {
 			throw new CustomerException("User must be logged in!");

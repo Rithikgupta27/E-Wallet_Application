@@ -44,7 +44,7 @@ public class WalletServiceImpl implements WalletService {
 	public String showBalance(String uniqueId) {
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
-			Optional<Customer> opt = Optional.of(cSession.getCustomer());
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer customer = opt.get();
 			return "customer Balance is : " + customer.getWallet().getBalance();
 
@@ -55,15 +55,14 @@ public class WalletServiceImpl implements WalletService {
 	}
 
 	@Override
-	public Wallet addMoneytoWallet(Integer BankId, Long amount, String uniqueId) {
+	public Wallet addMoneytoWallet(String BankId, Long amount, String uniqueId) {
 
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
-			Optional<Customer> opt = Optional.of(cSession.getCustomer());
-			;
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer customer = opt.get();
 
-			Optional<BankAccount> optbank = aDao.findById(BankId);
+			Optional<BankAccount> optbank = Optional.ofNullable(aDao.findByAccountNo(BankId));
 			BankAccount bank = optbank.get();
 
 			// transaction
@@ -91,13 +90,13 @@ public class WalletServiceImpl implements WalletService {
 	}
 
 	@Override
-	public Wallet transferToBank(Integer BankId, Long amount, String uniqueId) {
+	public Wallet transferToBank(String BankId, Long amount, String uniqueId) {
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
-			Optional<Customer> opt = Optional.of(cSession.getCustomer());
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer customer = opt.get();
 
-			Optional<BankAccount> optbank = aDao.findById(BankId);
+			Optional<BankAccount> optbank = Optional.ofNullable(aDao.findByAccountNo(BankId));
 			BankAccount bank = optbank.get();
 
 			// transaction
@@ -129,7 +128,7 @@ public class WalletServiceImpl implements WalletService {
 		if (!sourceMobileNo.equals(targetMobileNo)) {
 			CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 			if (cSession != null) {
-				Optional<Customer> opt = Optional.of(cSession.getCustomer());
+				Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 				Customer transferor = opt.get();
 
 				if (transferor.getMobileNumber().equals(sourceMobileNo)) {
@@ -167,6 +166,22 @@ public class WalletServiceImpl implements WalletService {
 	@Override
 	public Wallet updateWallet(Wallet wallet) {
 		return wDao.save(wallet);
+	}
+
+	@Override
+	public String updateKYC(String uniqueId) {
+		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
+		if (cSession != null) {
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
+			Customer customer = opt.get();
+			Wallet wallet = customer.getWallet();
+			wallet.setKycStatus(true);
+			wDao.save(wallet);
+			cDao.save(customer);
+			return "KYC Done!";
+		} else {
+			return "KYC failed";
+		}
 	}
 
 }

@@ -1,14 +1,17 @@
 package com.ePay.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ePay.exception.CustomerException;
+import com.ePay.model.Customer;
 import com.ePay.model.CustomerSession;
 import com.ePay.model.Transaction;
 import com.ePay.model.Wallet;
+import com.ePay.repository.CustomerDao;
 import com.ePay.repository.CustomerSessionDao;
 import com.ePay.repository.TransactionDao;
 
@@ -25,11 +28,16 @@ public class TransactionServiceImpl implements TransactionService {
 	@Autowired
 	private CustomerSessionDao csDao;
 
+	@Autowired
+	private CustomerDao cDao;
+
 	@Override
 	public Transaction addTransaction12(Transaction trans, String uniqueId) {
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
-			Wallet wallet = cSession.getCustomer().getWallet();
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
+			Customer customer = opt.get();
+			Wallet wallet = customer.getWallet();
 
 			// associate
 			trans.setWallet(wallet);
@@ -46,7 +54,9 @@ public class TransactionServiceImpl implements TransactionService {
 
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
-			Wallet wallet = cSession.getCustomer().getWallet();
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
+			Customer customer = opt.get();
+			Wallet wallet = customer.getWallet();
 
 			List<Transaction> transactios = tDao.findByWallet(wallet);
 			if (transactios.size() == 0) {

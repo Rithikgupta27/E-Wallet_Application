@@ -8,15 +8,15 @@ import com.ePay.model.BankAccount;
 import com.ePay.model.Customer;
 
 @Service
-public interface AccountServices {
+public interface AccountService {
 	public Customer addAccount(BankAccount Account, String uniqueId);
 
 	public Customer deleteAccount(Integer accountId, String uniqueId);
 
 	public BankAccount ViewAccount(String accountNo, String uniqueId);
 
-	public List<BankAccount> ViewAllAccount(Integer walletId, String uniqueId);
+	public List<BankAccount> ViewAllAccount(String walletId, String uniqueId);
 
-	//showBalance: Prashant Anand
-	public Customer showBalance(String mobileNo);
+	// showBalance: Prashant Anand
+	public String showBalance(String mobileNo);
 }

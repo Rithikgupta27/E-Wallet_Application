@@ -1,7 +1,9 @@
 package com.ePay.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,12 +39,14 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	public BillPayment addBillPayment(BillPayment bill, String uniqueId) throws WalletException {
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
-			Customer customer = cSession.getCustomer();
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
+			Customer customer = opt.get();
 			Wallet wallet = customer.getWallet();
 
 			if (wallet.getBalance() >= bill.getAmount()) {
 				long revisedBalance = wallet.getBalance() - bill.getAmount();
 				wallet.setBalance(revisedBalance);
+				bill.setPaymentDate(LocalDate.now());
 				cDao.save(customer);
 
 				// add transaction
@@ -71,7 +75,8 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	public List<BillPayment> viewPaidBills(String uniqueId) throws BillPaymentException {
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
-			Customer customer = cSession.getCustomer();
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
+			Customer customer = opt.get();
 			Wallet wallet = customer.getWallet();
 			List<BillPayment> bills = bDao.findByWallet(wallet);
 			if (bills.size() != 0) {

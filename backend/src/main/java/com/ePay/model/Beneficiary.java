@@ -12,9 +12,15 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Data
+@Getter
+@Setter
+@ToString
 public class Beneficiary {
 
 	@Id
@@ -23,6 +29,7 @@ public class Beneficiary {
 	private String name;
 	private String mobileNo;
 	private String relation;
+
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "cusomerId")

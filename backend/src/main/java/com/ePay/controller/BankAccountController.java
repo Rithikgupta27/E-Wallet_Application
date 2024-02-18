@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -15,13 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ePay.model.BankAccount;
 import com.ePay.model.Customer;
-import com.ePay.service.AccountServices;
+import com.ePay.service.AccountService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class BankAccountController {
 
 	@Autowired
-	private AccountServices aServices;
+	private AccountService aServices;
 
 	@PostMapping("/bankaccount/{uniqueId}")
 	public ResponseEntity<Customer> addBankAccountHandler(@RequestBody BankAccount Account,
@@ -49,14 +51,14 @@ public class BankAccountController {
 	}
 
 	@GetMapping("/bankaccounts/{walletId}/{uniqueId}")
-	public ResponseEntity<List<BankAccount>> ViewAllAccount(@PathVariable Integer walletId,
+	public ResponseEntity<List<BankAccount>> ViewAllAccount(@PathVariable String walletId,
 			@PathVariable String uniqueId) {
 		List<BankAccount> bankAccounts = aServices.ViewAllAccount(walletId, uniqueId);
 
 		return new ResponseEntity<List<BankAccount>>(bankAccounts, HttpStatus.ACCEPTED);
 
 	}
-	
+
 	////////////////
 
 }

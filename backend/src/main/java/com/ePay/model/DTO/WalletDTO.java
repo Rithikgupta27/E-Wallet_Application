@@ -7,9 +7,9 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-class WalletDTO {
+public class WalletDTO {
 	private String walletId;
-	private int balance;
+	private long balance;
 	private boolean kycStatus;
 
 }

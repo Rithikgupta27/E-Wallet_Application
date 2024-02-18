@@ -15,12 +15,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +33,8 @@ public class Transaction {
 	private LocalDateTime transactionDate;
 	private Long amount;
 	private String description;
+
+	private String recieversWalletId;
 
 	@JsonIgnore
 	@ManyToOne

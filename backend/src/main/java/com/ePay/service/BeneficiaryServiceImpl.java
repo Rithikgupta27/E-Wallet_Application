@@ -12,6 +12,7 @@ import com.ePay.model.Beneficiary;
 import com.ePay.model.Customer;
 import com.ePay.model.CustomerSession;
 import com.ePay.repository.BeneficiaryDAO;
+import com.ePay.repository.CustomerDao;
 import com.ePay.repository.CustomerSessionDao;
 
 @Service
@@ -26,14 +27,18 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 	@Autowired
 	private CustomerSessionDao csDao;
 
+	@Autowired
+	private CustomerDao cDao;
+
 	@Override
 	public Beneficiary addBeneficiary(Beneficiary beneficiary, String UniqueID)
 			throws BeneficiaryException, CustomerException {
 
 		CustomerSession cSession = csDao.findByUniqueId(UniqueID);
 		if (cSession != null) {
-			Optional<Customer> opt = Optional.of(cSession.getCustomer());
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer existingCustomer = opt.get();
+			System.out.println(beneficiary.toString());
 			beneficiary.setCustomer(existingCustomer);
 			return beneficiaryDAO.save(beneficiary);
 		}
@@ -47,7 +52,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 	public List<Beneficiary> viewBeneficiaries(String UniqueID) throws CustomerException, BeneficiaryException {
 		CustomerSession cSession = csDao.findByUniqueId(UniqueID);
 		if (cSession != null) {
-			Optional<Customer> opt = Optional.of(cSession.getCustomer());
+			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer existingCustomer = opt.get();
 			List<Beneficiary> beneficiaries = beneficiaryDAO.findByCustomer(existingCustomer);
 

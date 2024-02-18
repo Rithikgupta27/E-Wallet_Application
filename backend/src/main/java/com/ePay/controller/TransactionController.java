@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import com.ePay.model.Transaction;
 import com.ePay.service.TransactionService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class TransactionController {
 
 	@Autowired
@@ -23,12 +25,11 @@ public class TransactionController {
 		return new ResponseEntity<List<Transaction>>(tService.viewAllTransaction(uniqueId), HttpStatus.ACCEPTED);
 	}
 
-//
 //	@PostMapping("/viewTransactionByDate")
 //	public List<Transaction> viewTransactionByDate(@RequestBody LocalDateTime from, LocalDateTime to) {
 //		return tService.viewTransactionByDate(from, to);
 //	}
-//
+
 	@GetMapping("/viewAllTransactionType/{type}/{uniqueId}")
 	public ResponseEntity<List<Transaction>> viewAllTransaction(@PathVariable String type,
 			@PathVariable String uniqueId) {

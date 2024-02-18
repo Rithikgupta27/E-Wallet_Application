@@ -1,5 +1,6 @@
 package com.ePay.model;
 
+import javax.persistence.Column;
 //import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,16 +14,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
 public class BankAccount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(unique = true)
 	private String accountNo;
 	private String ifscCode;
 	private String bankName;

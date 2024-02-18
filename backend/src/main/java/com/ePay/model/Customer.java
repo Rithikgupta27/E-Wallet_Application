@@ -17,12 +17,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,8 +60,9 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Wallet wallet;
 
-	@OneToOne(mappedBy = "customer")
-	private CustomerSession customerSession;
+	// don't link customer with session
+//	@OneToOne(mappedBy = "customer")
+//	private CustomerSession customerSession;
 
 }
 
