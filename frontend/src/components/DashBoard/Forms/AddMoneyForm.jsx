@@ -17,7 +17,6 @@ const AddMoneyForm = (props) => {
       }
       e.preventDefault();  
         // call a service method for backend req
-      
 
     }
   return (

@@ -12,6 +12,7 @@ const AuthService = {
         const uniqueId = response.data.split('uniqueId=')[1].split(',')[0];    
         // Store the uniqueId in local storage for further authentication or session management
         localStorage.setItem('uniqueId', uniqueId); 
+        localStorage.setItem('mobileNumber', mobileNumber);
         }
       return response;
     } catch (error) {
@@ -20,13 +21,15 @@ const AuthService = {
   },
   logoutUser: async (uniqueId) => {
     try {
-      localStorage.removeItem('uniqueId');
       const response = await axios.patch(`/logout/${uniqueId}`);
-      return response.data; 
+      localStorage.removeItem('uniqueId');
+      return response.data;
     } catch (error) {
-      throw error; 
+        // console.error('Error during logout:', error);
+        // throw new Error('Logout failed. Please try again.');
+        alert("Logout failed. Please try again later.")
     }
-  },
+},
   signinUser: async (mobileNumber) => {
     try {
       const response = await axios.post("/signUp", {

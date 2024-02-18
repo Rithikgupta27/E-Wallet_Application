@@ -38,9 +38,10 @@ const KycForm = (props) => {
         try{
           const uniqueId = localStorage.getItem('uniqueId');
           console.log(uniqueId);
-          const responce = KYCService.updateKYCStatus(uniqueId);
-          console.log(responce); // error fetching data ..
+          KYCService.updateKYCStatus(uniqueId);
           setSuccessMessage("KYC Complete");
+          setAdharNumber('')
+          setOtp('');
         }  catch{
           setErrorMessage("KYC failed or done already")
         }
@@ -58,25 +59,23 @@ const KycForm = (props) => {
        <form className="styled-form" onSubmit={clickSubmit}>
         <label>Addhar Number:</label>
         <input
-          type="number"
+          type="text"
           id="adhar"
           name="adharNumber"
-          value={adharNumber}
           onChange={changedAdharNumber}
-          placeholder="Enter Aadhar Card"
+          placeholder="Enter Aadhar 12 digit Number"
         />
         <button type="button" onClick={getOTPLocally}>
           OTP
         </button>
-        <label>OTP:</label>
         <input
-          type="number"
+          type="text"
           id="otp"
           name="otp"
-          value={otp}
           onChange={changedOtp}
           placeholder="Enter OTP"
           pattern="[0-9]{4}"
+          inputMode="numeric"
         />
         {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
         {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}

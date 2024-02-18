@@ -11,7 +11,7 @@ import PayBills from './components/DashBoard/Pages/PayBills';
 import AddMoney from './components/DashBoard/Pages/AddMoney';
 import CheckBalance from './components/DashBoard/Pages/CheckBalance';
 import AddBenificary from './components/DashBoard/Pages/AddBenificary';
-import TransactionHistory from './components/DashBoard/Forms/TransactionTable';
+import TransactionHistory from './components/DashBoard/Pages/TransactionHistory';
 import Kyc from './components/DashBoard/Pages/Kyc';
 import AddBankAccount from './components/DashBoard/Pages/AddBankAccount';
 

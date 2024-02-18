@@ -38,6 +38,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 		if (cSession != null) {
 			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer existingCustomer = opt.get();
+			System.out.println(beneficiary.toString());
 			beneficiary.setCustomer(existingCustomer);
 			return beneficiaryDAO.save(beneficiary);
 		}

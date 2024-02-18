@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../Helper/Button';
 import { Link } from 'react-router-dom';
-// import CustomerService from '../../services/DashBoard/CustomerService';
+import AuthService from '../../services/Auth/AuthService';
 import './Navbar.css';
+import { ButtonLogout } from '../Helper/ButtonLogout';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -19,6 +20,15 @@ function Navbar() {
       setButton(true);
     }
   };
+
+  const logoutUser = () =>{
+    const uniqueId = localStorage.getItem('uniqueId')
+    try{
+      AuthService.logoutUser(uniqueId);
+    }catch (error){
+      alert("Logout failed. Please try again later.")
+    }
+  }
 
   // const fetchUserName = () => {
   //   const uniqueId = localStorage.getItem('uniqueId');
@@ -87,7 +97,7 @@ function Navbar() {
                 Welcome, {userName}
               </Link>
             </li> */}
-
+            {/* responsive text links */}
             <li>
               <Link
                 to='/user-profile'
@@ -97,8 +107,18 @@ function Navbar() {
                 Profile
               </Link>
             </li>
+            <li>
+              <Link
+                to='/auth'
+                className='nav-links-mobile'
+                onClick={logoutUser}
+              >
+                Logout
+              </Link>
+            </li>
           </ul>
           {button && <Button buttonStyle='btn--outline'>Profile</Button>}
+          {button && <ButtonLogout buttonStyle='btn--outline'>Logout</ButtonLogout>}
         </div>
       </nav>
     </>

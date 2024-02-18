@@ -1,10 +1,11 @@
 import axios from "../API/axios";
 
 const BenificaryService = {
-  addBeneficiary: async (bname, mobile, relation, uniqueId) => {
+  addBeneficiary: async (name, mobileNo, relation, uniqueId) => {
   try {
+    console.log(mobileNo, name, relation);
     const response = await axios.post(`/beneficiary/${uniqueId}`, {
-      bname, mobile, relation
+      mobileNo, name, relation
     });
     return response;
   } catch (error) {

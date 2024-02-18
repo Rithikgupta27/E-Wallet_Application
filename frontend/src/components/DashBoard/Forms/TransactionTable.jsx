@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../../Header/Navbar'
-import Footer from '../../Footer/Footer'
 import './Table.css'
 import axios from '../../../services/API/axios';
 
-const TransactionHistory = () => {
+const TransactionTable = () => {
   const [trans, setTrans] = useState([]);
   useEffect(()=>{
     document.title="All Your Transaction"
@@ -30,7 +28,6 @@ const TransactionHistory = () => {
   
   return (
     <div>
-    <Navbar/>
     <h1>Transaction Table</h1>
     <table className='table-container custom-table'> 
       <tr>
@@ -50,9 +47,8 @@ const TransactionHistory = () => {
       <td>{item.transactionDate}</td>
      </tr>)):"No Transaction"}
      </table>
-     <Footer/>
     </div>
   )
 }
 
-export default TransactionHistory
+export default TransactionTable

@@ -1,5 +1,6 @@
 package com.ePay.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -45,6 +46,7 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 			if (wallet.getBalance() >= bill.getAmount()) {
 				long revisedBalance = wallet.getBalance() - bill.getAmount();
 				wallet.setBalance(revisedBalance);
+				bill.setPaymentDate(LocalDate.now());
 				cDao.save(customer);
 
 				// add transaction

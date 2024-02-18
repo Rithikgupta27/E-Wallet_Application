@@ -25,7 +25,7 @@ const PayBillForm = () => {
       const uniqueId = localStorage.getItem('uniqueId');
       event.preventDefault();
       console.log(uniqueId);
-      BillPaymentService.payBills(billType, amount, billDescription, uniqueId);
+      BillPaymentService.addBill(billType, amount, billDescription, uniqueId);
     };
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const PayBillForm = () => {
     
       const fetchBills = async () => {
         try {
-          const bills = await BillPaymentService.getAll(uniqueId);
+          const bills = await BillPaymentService.getAllBills(uniqueId);
           setBills(bills);
           console.log(bills);
         } catch (error) {
