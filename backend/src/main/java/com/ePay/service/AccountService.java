@@ -15,7 +15,7 @@ public interface AccountService {
 
 	public BankAccount ViewAccount(String accountNo, String uniqueId);
 
-	public List<BankAccount> ViewAllAccount(Integer walletId, String uniqueId);
+	public List<BankAccount> ViewAllAccount(String walletId, String uniqueId);
 
 	// showBalance: Prashant Anand
 	public String showBalance(String mobileNo);

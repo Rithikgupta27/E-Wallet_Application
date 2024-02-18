@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable eqeqeq */
+import React, { useState } from 'react';
 import './Form.css';
 import BillPaymentService from '../../../services/DashBoard/BillPaymentService';
 
@@ -6,7 +7,8 @@ const PayBillForm = () => {
     const [billType, setBillType] = useState("");
     const [amount, setAmount] = useState(0);
     const [billDescription, setBillDescription] = useState("");
-    const [bills, setBills] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const changedAmount = (event) => {
         setAmount(event.target.value);
@@ -21,28 +23,21 @@ const PayBillForm = () => {
     };
 
     const clickSubmit = (event) => {
-      console.log(bills);
-      const uniqueId = localStorage.getItem('uniqueId');
+      // validations
       event.preventDefault();
-      console.log(uniqueId);
+      if (!billType || amount == 0 ){
+        setErrorMessage("Fill correct information");
+        return;
+      }
+      const uniqueId = localStorage.getItem('uniqueId');
       BillPaymentService.addBill(billType, amount, billDescription, uniqueId);
+      setSuccessMessage("Bill paid Successfully ..")
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     };
 
-    useEffect(() => {
-      const uniqueId = localStorage.getItem('uniqueId');
-    
-      const fetchBills = async () => {
-        try {
-          const bills = await BillPaymentService.getAllBills(uniqueId);
-          setBills(bills);
-          console.log(bills);
-        } catch (error) {
-          console.error('Error fetching bills:', error);
-        }
-      };
-    
-      fetchBills();
-    }, []);
+    // fecth bills shown in transactions
 
     return (
         <div className="divFlex">
@@ -62,8 +57,11 @@ const PayBillForm = () => {
                     </select>
                     <label>Amount:</label>
                     <input type="number" id="amount" name="amount" required value={amount} onChange={changedAmount} placeholder='Enter Amount' />
-                    <label>Bill Description:</label>
-                    <input type="text" id="billDescription" name="billDescription" required value={billDescription} onChange={changedBillDescription} placeholder='Enter Bill Description' />
+                    <label>Bill Description: (optional)</label>
+                    <input type="text" id="billDescription" name="billDescription" value={billDescription} onChange={changedBillDescription} placeholder='Enter Bill Description' />
+                    
+                    {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
+                    {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
                     <button type="submit">Add Bill Payment</button>
                 </form>
             </div>

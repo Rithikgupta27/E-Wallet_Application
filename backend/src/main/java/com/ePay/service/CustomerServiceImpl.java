@@ -112,6 +112,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerSession checkCustomerSession(String uniqueId) {
+		System.out.println(uniqueId);
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
 			return cSession;

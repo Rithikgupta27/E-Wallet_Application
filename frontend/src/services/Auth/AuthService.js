@@ -23,6 +23,7 @@ const AuthService = {
     try {
       const response = await axios.patch(`/logout/${uniqueId}`);
       localStorage.removeItem('uniqueId');
+      localStorage.removeItem('kyc');
       return response.data;
     } catch (error) {
         // console.error('Error during logout:', error);

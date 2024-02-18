@@ -37,14 +37,14 @@ public class WalletController {
 	}
 
 	@PostMapping("/addMoney/{BankId}/{amount}/{uniqueId}")
-	public ResponseEntity<Wallet> addMoneytoWallet(@PathVariable Integer BankId, @PathVariable Long amount,
+	public ResponseEntity<Wallet> addMoneytoWallet(@PathVariable String BankId, @PathVariable Long amount,
 			@PathVariable String uniqueId) {
 		Wallet wallet = walletService.addMoneytoWallet(BankId, amount, uniqueId);
 		return new ResponseEntity<Wallet>(wallet, HttpStatus.OK);
 	}
 
 	@PostMapping("/bankTrf/{BankId}/{amount}/{uniqueId}")
-	public ResponseEntity<Wallet> transferToBank(@PathVariable Integer BankId, @PathVariable Long amount,
+	public ResponseEntity<Wallet> transferToBank(@PathVariable String BankId, @PathVariable Long amount,
 			@PathVariable String uniqueId) {
 		Wallet wallet = walletService.transferToBank(BankId, amount, uniqueId);
 		return new ResponseEntity<Wallet>(wallet, HttpStatus.OK);

@@ -26,10 +26,12 @@ const AddAccountForm = () => {
         accountNo, bankName, ifscCode, balance
       })
       .then(response => {
+        setSuccessMessage("Bank Account added Successfully");
         return response;
       })
       .catch(error => {
-        throw error;
+        console.log("In add acc:"+ error);
+        setErrorMessage("Failed to Add Bank Account or Account already connected.");
       });
     }
 
@@ -41,7 +43,7 @@ const AddAccountForm = () => {
         setErrorMessage("All fields are mandatory ..");
         return;
       }
-      if (isNaN(accountNo) ||accountNo.length !== 12){
+      if (isNaN(accountNo) || accountNo.length !== 12){
         setErrorMessage("Bank account must be 12 digit");
         return;
       }
@@ -52,18 +54,14 @@ const AddAccountForm = () => {
       setAmount(Math.floor(Math.random() * (1000000)));
       console.log(amount);
       try{
-        // call service method
         const uniqueId = localStorage.getItem('uniqueId');
         addAccount(accountNo, bankName, ifsc, amount, uniqueId);
-        setErrorMessage("");
-        setAccountNo('');
-        setBankName('');
-        setIfsc('');
-        setSuccessMessage("Bank Account added Successfully");
-
       } catch(error){
         setErrorMessage("Failed to Add Bank Account");
       }
+      setAccountNo('');
+      setBankName('');
+      setIfsc('');
     }
   return (
     <div className="divFlex">
@@ -73,11 +71,11 @@ const AddAccountForm = () => {
        <div>
        <form className="styled-form" onSubmit={clickSubmit}>
          <label >Bank Name:</label>
-         <input type="text" id="bankname" name="bankname" onChange={changedBankName} placeholder='Bank Abbreviation'/>
+         <input type="text" id="bankname" name="bankname" value={bankName} onChange={changedBankName} placeholder='Bank Abbreviation'/>
          <label >BankAccount:</label>
-         <input type="text" id="accountNo" name="accountNo" onChange={changedBankAccount} placeholder='12 digit Account Number'/>
+         <input type="text" id="accountNo" name="accountNo" value={accountNo} onChange={changedBankAccount} placeholder='12 digit Account Number'/>
          <label >IFSC CODE:</label>
-         <input type="text" id="ifsc" name="ifsc" onChange={changedIfsc} placeholder='Enter Ifsc 6-letter Code'/>
+         <input type="text" id="ifsc" name="ifsc" value={ifsc} onChange={changedIfsc} placeholder='Enter Ifsc 6-letter Code'/>
 
          {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
          {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}

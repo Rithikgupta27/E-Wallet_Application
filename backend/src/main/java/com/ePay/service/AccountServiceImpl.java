@@ -103,7 +103,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<BankAccount> ViewAllAccount(Integer walletId, String uniqueId) {
+	public List<BankAccount> ViewAllAccount(String walletId, String uniqueId) {
 		CustomerSession session = csDao.checkCustomerSession(uniqueId);
 		if (session != null) {
 			Optional<Wallet> opt = wDao.findById(walletId);

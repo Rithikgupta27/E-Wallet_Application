@@ -35,7 +35,7 @@ const AddBeneficiaryForm = (props) => {
           setErrorMessage("Beneficiary name is too short");
           return;
       }
-
+      // testing required .. (dont show any direct errors ..)
       try {
           const uniqueId = localStorage.getItem("uniqueId");
           const response = await BenificaryService.addBeneficiary(bname, mobile, relation, uniqueId);
@@ -45,6 +45,10 @@ const AddBeneficiaryForm = (props) => {
           setBname('');
           setMobile('');
           setRelation('');
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+
       } catch (error) {
           setErrorMessage('Error adding the beneficiary');
       }

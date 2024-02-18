@@ -55,14 +55,14 @@ public class WalletServiceImpl implements WalletService {
 	}
 
 	@Override
-	public Wallet addMoneytoWallet(Integer BankId, Long amount, String uniqueId) {
+	public Wallet addMoneytoWallet(String BankId, Long amount, String uniqueId) {
 
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
 			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer customer = opt.get();
 
-			Optional<BankAccount> optbank = aDao.findById(BankId);
+			Optional<BankAccount> optbank = Optional.ofNullable(aDao.findByAccountNo(BankId));
 			BankAccount bank = optbank.get();
 
 			// transaction
@@ -90,13 +90,13 @@ public class WalletServiceImpl implements WalletService {
 	}
 
 	@Override
-	public Wallet transferToBank(Integer BankId, Long amount, String uniqueId) {
+	public Wallet transferToBank(String BankId, Long amount, String uniqueId) {
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
 			Optional<Customer> opt = cDao.findById(cSession.getCustomerId());
 			Customer customer = opt.get();
 
-			Optional<BankAccount> optbank = aDao.findById(BankId);
+			Optional<BankAccount> optbank = Optional.ofNullable(aDao.findByAccountNo(BankId));
 			BankAccount bank = optbank.get();
 
 			// transaction

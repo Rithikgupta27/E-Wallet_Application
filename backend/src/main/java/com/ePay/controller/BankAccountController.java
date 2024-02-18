@@ -51,7 +51,7 @@ public class BankAccountController {
 	}
 
 	@GetMapping("/bankaccounts/{walletId}/{uniqueId}")
-	public ResponseEntity<List<BankAccount>> ViewAllAccount(@PathVariable Integer walletId,
+	public ResponseEntity<List<BankAccount>> ViewAllAccount(@PathVariable String walletId,
 			@PathVariable String uniqueId) {
 		List<BankAccount> bankAccounts = aServices.ViewAllAccount(walletId, uniqueId);
 

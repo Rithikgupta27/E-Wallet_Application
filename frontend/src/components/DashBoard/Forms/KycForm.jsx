@@ -32,6 +32,16 @@ const KycForm = (props) => {
       setErrorMessage("")
       if (!otp){
         setErrorMessage("Please enter the OTP")
+        return;
+      }
+      if (!isNaN(parseInt(adharNumber)) && adharNumber.length === 12) { 
+        setErrorMessage("Dont act Smart")
+        return;
+      }
+      const kyc = localStorage.getItem("kyc")
+      if (kyc == 1){
+        setSuccessMessage("Kyc is done already");
+        return;
       }
       events.preventDefault();  
       if (otp == sysOTP){
@@ -40,6 +50,7 @@ const KycForm = (props) => {
           console.log(uniqueId);
           KYCService.updateKYCStatus(uniqueId);
           setSuccessMessage("KYC Complete");
+          localStorage.setItem("kyc", 1);
           setAdharNumber('')
           setOtp('');
         }  catch{
