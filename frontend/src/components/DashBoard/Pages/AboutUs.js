@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AboutUs = () => {
   const titleStyle = {
-    color: '#d63384', 
+    color: 'turquoise', 
     fontSize: '30px',
     textAlign: 'center',
     marginTop: '2rem'

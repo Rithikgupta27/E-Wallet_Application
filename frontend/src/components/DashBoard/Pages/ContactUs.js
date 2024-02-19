@@ -5,7 +5,7 @@ import Footer from '../../Footer/Footer'
 
 const ContactUs = () => {
   const titleStyle = {
-    color: '#d63384', 
+    color: 'turquoise', 
     fontSize: '30px',
     textAlign: 'justify',
     marginTop: '2rem'
