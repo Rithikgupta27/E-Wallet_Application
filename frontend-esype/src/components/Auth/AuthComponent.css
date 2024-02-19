@@ -1,5 +1,0 @@
-/* Hide scrollbar for other browsers */
-/* prettier-ignore */
-.scrollbar-hide::-webkit-scrollbar {
-display: none;
-}
