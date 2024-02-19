@@ -7,7 +7,6 @@ const SendMoney = () => {
   return (
     <div>
       <Navbar/>
-      <h1>SendMoney</h1>
       <SendMoneyForm/>
       <Footer/>
     </div>

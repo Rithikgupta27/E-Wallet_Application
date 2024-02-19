@@ -2,16 +2,15 @@ import axios from "../API/axios";
 
 const CustomerService = {
     getCustomerDetails: (uniqueId) => {
-    return new Promise((resolve, reject) => {
-        axios.get(`/customer/${uniqueId}`, {})
-        .then(response => {
-            resolve(response);
-        })
-        .catch(error => {
-            reject(error);
-        });
-    });
-    },
+    axios.get(`/customer/${uniqueId}`, {}).then(
+        (response) => {
+            return response;
+        },
+        (error) => {
+            console.log(error);
+        }
+    );
+    }
       
   
 

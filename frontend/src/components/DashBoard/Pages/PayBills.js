@@ -8,10 +8,14 @@ const PayBills = () => {
   return (
     <div>
       <Navbar/>
-      <h1>Bill History</h1>
-      <ShowBillsTable/>
-      <h1>PayBills</h1>
-      <PayBillsForm/>
+      <div className='flexed'>
+      <div className='boxed'>
+        <ShowBillsTable/>
+      </div>
+      <div>
+         <PayBillsForm/>
+      </div>
+      </div>
       <Footer/>
     </div>
   )

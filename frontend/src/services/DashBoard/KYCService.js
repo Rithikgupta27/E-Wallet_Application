@@ -9,9 +9,6 @@ const KYCService = {
       throw error;
     }
   }
-  
-
-  
 
 };
 

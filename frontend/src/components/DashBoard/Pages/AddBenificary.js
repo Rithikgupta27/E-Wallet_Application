@@ -8,10 +8,14 @@ const AddBenificary = () => {
   return (
     <div>
       <Navbar/>
-      <h1>List of beneficiary</h1>
-      <BeneficiaryTable/>
-      <h1>Add benificary</h1>
-      <AddBenificaryForm/>
+      <div className='flexed'>
+        <div className='boxed'>
+          <BeneficiaryTable/> 
+        </div>
+        <div>
+           <AddBenificaryForm/>
+        </div>
+      </div>
       <Footer/>
     </div>
   )

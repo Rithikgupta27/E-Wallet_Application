@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <div>
       <Navbar/>
-      <h1 className='aboutus'>About Us</h1>
+      <h1 className='heading'>About Us</h1>
       <Footer/>
     </div>
   )

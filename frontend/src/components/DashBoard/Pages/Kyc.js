@@ -6,8 +6,9 @@ const Kyc = () => {
   return (
     <div>
       <Navbar/>
-      <h1>kyc</h1>
-      <KycForm/>
+      <div className='flexed'>
+        <KycForm/>
+      </div>
       <Footer/>
     </div>
   )

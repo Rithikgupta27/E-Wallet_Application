@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import AuthService from '../../services/Auth/AuthService';
 import './Navbar.css';
 import { ButtonLogout } from '../Helper/ButtonLogout';
+// import axios from '../../services/API/axios';
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-  // const [userName, setUserName] = useState('User');
+  // const [userName, setUserName] = useState('');
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -20,6 +22,18 @@ function Navbar() {
       setButton(true);
     }
   };
+
+  // const getCustomerDetails = (uniqueId) => {
+  //   axios.get(`/customer/${uniqueId}`, {}).then(
+  //     (response) => {
+  //       console.log(response.data);
+  //       setUserName(response.data.firstName);
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // };
 
   const logoutUser = () =>{
     const uniqueId = localStorage.getItem('uniqueId')
@@ -35,9 +49,7 @@ function Navbar() {
   //   console.log(uniqueId)
   //   if(uniqueId){
   //     try{
-  //       const response = CustomerService.getCustomerDetails(uniqueId);
-  //       console.log(response);
-  //       setUserName(response.data.firstName);
+  //       getCustomerDetails(uniqueId);
   //     } catch (error){
   //       console.log('navbar fetch UserName:' + error);
   //     }

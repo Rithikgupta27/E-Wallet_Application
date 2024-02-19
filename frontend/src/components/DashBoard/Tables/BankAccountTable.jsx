@@ -42,7 +42,7 @@ const BankAccountTable = () => {
                 <td>{item.accountNo}</td>
                 <td>{item.bankName}</td>
                 <td>{item.ifscCode}</td>
-                <td>{item.balance}</td>
+                <td>Rs. {item.balance}</td>
                 {/* <td>
                   <button style={{color: "white"}} onClick={() => removeBankAccount(item.id)}>Delete</button>
                 </td> */}

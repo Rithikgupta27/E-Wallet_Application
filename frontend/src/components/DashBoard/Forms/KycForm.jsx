@@ -62,12 +62,9 @@ const KycForm = (props) => {
       }
     }
   return (
-    <div className="divFlex">
-       <div>
-          <h2>Images</h2>
-       </div>
-       <div>
-       <form className="styled-form" onSubmit={clickSubmit}>
+    <div className="styled-form">
+      <h1 className='subheading'>KYC DETAILS</h1>
+       <form  onSubmit={clickSubmit}>
         <label>Addhar Number:</label>
         <input
           type="text"
@@ -77,8 +74,10 @@ const KycForm = (props) => {
           placeholder="Enter Aadhar 12 digit Number"
         />
         <button type="button" onClick={getOTPLocally}>
-          OTP
+          Get OTP
         </button>
+        <br/>
+        <br/>
         <input
           type="text"
           id="otp"
@@ -93,7 +92,6 @@ const KycForm = (props) => {
         <button type="submit">Submit</button>
       </form>
        </div>
-    </div>
   );
 };
 

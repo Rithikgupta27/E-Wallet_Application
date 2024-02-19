@@ -7,7 +7,12 @@ const TransactionHistory = () => {
   return (
     <div>
     <Navbar/>
-    <TransactionTable/>
+    <br/>
+    <br/>
+    <div className='boxed'>
+      <TransactionTable/>
+    </div>
+    <br/>
     <Footer/>
     </div>
   )

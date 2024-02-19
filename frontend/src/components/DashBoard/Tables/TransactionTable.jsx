@@ -25,10 +25,21 @@ const TransactionTable = () => {
     AllTrans()
   },[]);
   // | transaction_id | amount | bank_transaction_id | description | transaction_date | transaction_type | wallet_id |
-  
+  // const randomNumber = 1694509;
+  function formatTransactionDate(transactionDate) {
+    // Extracting date and time parts
+    let datePart = transactionDate.split("T")[0];
+    let timePart = transactionDate.split("T")[1];
+    
+    // Removing hyphens from date and colons from time
+    let dateWithoutHyphens = datePart.replace(/-/g, "");
+    let timeWithoutColons = timePart.replace(/:/g, "").slice(0, -7);
+    
+    return dateWithoutHyphens + timeWithoutColons;
+  }
   return (
     <div>
-    <h1>Transaction Table</h1>
+    <h1 className='subheading'>TRANSACTIONS HISTORY</h1>
     <table className='table-container custom-table'> 
       <tr>
         <th>TransactionId</th>
@@ -40,9 +51,9 @@ const TransactionTable = () => {
       </tr>
       {trans.length > 0 ? 
           trans.map((item)=>(<tr key = {item.transactionId}>
-      <td>{item.transactionId}</td>
+      <td>{formatTransactionDate(item.transactionDate)}{item.transactionId}</td>
       <td>{item.transactionType}</td>
-      <td>{item.amount}</td>
+      <td>Rs. {item.amount}</td>
       <td> {item.description}</td>
       <td>{item.transactionDate}</td>
      </tr>)):"No Transaction"}

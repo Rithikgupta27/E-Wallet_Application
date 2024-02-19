@@ -7,8 +7,14 @@ const AddBankAccount = () => {
   return (
     <div>
       <Navbar/>
-      <h1>Add bank Account</h1>
-      <AddAccountForm/>
+      <div className='flexed'>
+        <div className='boxed'>
+           <h2>gif</h2>
+        </div>
+        <div>
+          <AddAccountForm/>
+        </div>
+      </div>
       <Footer/>
     </div>
   )

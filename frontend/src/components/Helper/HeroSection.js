@@ -1,30 +1,31 @@
 import React from 'react';
 import '../../App.css';
-import { Button } from './Button';
 import './HeroSection.css';
+import { ButtonTrailer } from './ButtonTrailer';
+import { ButtonGetStarted } from './ButtonGetStarted';
 
 function HeroSection() {
   return (
     <div className='hero-container'>
-      <video src='/videos/video-3.mp4' autoPlay loop muted />
-      <h1>EXPERT SERVICE</h1>
-      <p>Where Quality Meets the Road</p>
+      <video src='/videos/e-wallet-video.mp4' autoPlay loop muted />
+      <h1>ePay Wallet</h1>
+      <p>An Online Payment Application</p>
       <div className='hero-btns'>
-        <Button
+        <ButtonGetStarted
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
         >
           GET STARTED
-        </Button>
-        <Button
+        </ButtonGetStarted>
+        <ButtonTrailer
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
           onClick={console.log('hey')}
         >
           WATCH TRAILER <i className='far fa-play-circle' />
-        </Button>
+        </ButtonTrailer>
       </div>
     </div>
   );

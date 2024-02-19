@@ -26,8 +26,13 @@ const CheckBalance = () => {
   return (
     <div>
       <Navbar/>
-      <h1>CheckBalance</h1>
-      <h1>Wallet balance: Rs. {balance}</h1> 
+      <br/>
+      <div className='checkBalance'>
+         <h1 className='subheading'>CHECK BALANCE</h1>
+         <h1>Wallet balance:</h1>
+         <h1>Rs. <span className='amountText'>{balance}.00</span></h1> 
+      </div>
+      <br/>
       <Footer/>
     </div>
   )

@@ -7,13 +7,18 @@ import BankAccountTable from '../Tables/BankAccountTable';
 
 function AddMoney() {
   return (
-    <div className='add-money'> 
+    <div > 
       <Navbar/>
-      <h1>Bank Account List</h1>
-      <BankAccountTable/>        
-      <h1>ADD MONEY</h1>
-      <AddMoneyForm/>   
-      <br/>        
+      {/* <h1 className='heading'>Add Money</h1> */}
+      <div className='flexed'>
+      <div className='boxed' >
+         <h1 className='subheading'>BANK ACCOUNT LIST</h1>
+         <BankAccountTable/>        
+      </div>
+      <div >
+          <AddMoneyForm/>   
+      </div>
+      </div>
       <Footer/>
     </div>
   );
