@@ -3,15 +3,21 @@ import Navbar from '../../Header/Navbar'
 import Footer from '../../Footer/Footer'
 import PayBillsForm from '../Forms/PayBillForm'
 import ShowBillsTable from '../Tables/ShowBillsTable'
+import NavbarLand from '../../Header/NavbarLand'
 
 const PayBills = () => {
+  const isLoggedIn = localStorage.getItem("uniqueId") !== null;
   return (
     <div>
-      <Navbar/>
-      <h1>Bill History</h1>
-      <ShowBillsTable/>
-      <h1>PayBills</h1>
-      <PayBillsForm/>
+      {isLoggedIn ? <Navbar /> : <NavbarLand />} 
+      <div className='flexed'>
+      <div className='boxed'>
+        <ShowBillsTable/>
+      </div>
+      <div>
+         <PayBillsForm/>
+      </div>
+      </div>
       <Footer/>
     </div>
   )

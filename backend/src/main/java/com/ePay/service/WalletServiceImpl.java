@@ -1,5 +1,6 @@
 package com.ePay.service;
 
+import java.time.LocalDateTime;
 //import java.math.BigDecimal;
 //import java.util.List;
 import java.util.Optional;
@@ -11,9 +12,11 @@ import com.ePay.exception.CustomerException;
 import com.ePay.model.BankAccount;
 import com.ePay.model.Customer;
 import com.ePay.model.CustomerSession;
+import com.ePay.model.Transaction;
 import com.ePay.model.Wallet;
 import com.ePay.repository.CustomerDao;
 import com.ePay.repository.CustomerSessionDao;
+import com.ePay.repository.TransactionDao;
 import com.ePay.repository.WalletDao;
 import com.ePay.repository.accountDao;
 
@@ -32,6 +35,9 @@ public class WalletServiceImpl implements WalletService {
 
 	@Autowired
 	private CustomerDao cDao;
+
+	@Autowired
+	private TransactionDao tDao;
 
 	@Autowired
 	private CustomerSessionDao csDao;
@@ -75,6 +81,16 @@ public class WalletServiceImpl implements WalletService {
 
 				bank.setBalance(revisedBankBalance);
 				wallet.setBalance(revisedwalletbalance);
+
+				// add transaction
+				Transaction transaction = new Transaction();
+				transaction.setAmount(amount);
+				transaction.setDescription("Money Recived from Bank XXXX" + bank.getAccountNo().substring(8));
+				transaction.setRecieversWalletId(wallet.getWalletId());
+				transaction.setTransactionDate(LocalDateTime.now());
+				transaction.setTransactionType("Recived Money");
+				transaction.setWallet(wallet);
+				tDao.save(transaction);
 
 				cDao.save(customer);
 				return customer.getWallet();
@@ -141,6 +157,16 @@ public class WalletServiceImpl implements WalletService {
 						Long revisedBankBalanceREE = transforee.getWallet().getBalance() + amount;
 						transferor.getWallet().setBalance(revisedBankBalanceROR);
 						transforee.getWallet().setBalance(revisedBankBalanceREE);
+
+						// add transaction
+						Transaction transaction = new Transaction();
+						transaction.setAmount(amount);
+						transaction.setDescription("Money sent to " + transforee.getWallet().getWalletId());
+						transaction.setRecieversWalletId(transforee.getWallet().getWalletId());
+						transaction.setTransactionDate(LocalDateTime.now());
+						transaction.setTransactionType("Send Money");
+						transaction.setWallet(transferor.getWallet());
+						tDao.save(transaction);
 
 						cDao.save(transforee);
 						cDao.save(transferor);

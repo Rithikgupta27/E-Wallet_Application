@@ -55,12 +55,9 @@ const AddBeneficiaryForm = (props) => {
     }
 
     return (
-        <div className="divFlex">
-            <div>
-                <h2>Images</h2>
-            </div>
-            <div>
-                <form className="styled-form" onSubmit={handleSubmit}>
+        <div className="styled-form">
+               <h1 className='subheading'>ADD BENEFICIARY</h1>
+                <form  onSubmit={handleSubmit}>
                     <label htmlFor="bname">Beneficiary Name:</label>
                     <input type="text" id="bname" name="bname" value={bname} onChange={handleBnameChange} placeholder='Enter Beneficiary Name'/>
                     <label htmlFor="mobile">Mobile Number:</label>
@@ -81,7 +78,6 @@ const AddBeneficiaryForm = (props) => {
                     <button type="submit">Add Beneficiary</button>
                 </form>
             </div>
-        </div>
     );
 };
 

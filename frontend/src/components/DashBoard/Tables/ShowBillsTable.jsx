@@ -22,8 +22,11 @@ const ShowBillsTable = () => {
     }, []);
 
   return (
-    <div className="table-container">
-      <table className="custom-table">
+    <div>
+      <h1 className='subheading'>BILL HISTORY</h1>
+      <div>
+
+      <table className="custom-table table-container ">
         <thead>
           <tr>
             <th>Bill Type</th>
@@ -39,7 +42,7 @@ const ShowBillsTable = () => {
                 <td>{item.billType}</td>
                 <td>{item.billDescription}</td>
                 <td>{item.paymentDate}</td>
-                <td>{item.amount}</td>
+                <td>Rs. {item.amount}</td>
               </tr>
             ))
           ) : (
@@ -49,6 +52,7 @@ const ShowBillsTable = () => {
           )}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

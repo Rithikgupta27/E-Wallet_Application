@@ -46,8 +46,9 @@ const AddMoneyForm = () => {
     }
   
   return (
-    <div>
-      <form className="styled-form" onSubmit={submitHandler} >
+    <div className="styled-form">
+      <h1 className='subheading'>ADD MONEY</h1>
+      <form  onSubmit={submitHandler} >
       <label >BankAccount:</label>
       <input type="text" id="bankAccount" name="bankAccount" required onChange={changedBankAccount} placeholder='Enter Bank Account'/>
 

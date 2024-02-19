@@ -13,7 +13,7 @@ const BillPaymentService = {
   addBill: async (billType, amount, billDescription, uniqueId) => {
     try {
       if (!billDescription){
-        billDescription = `${billType} of ${amount}Rs is paid`;
+        billDescription = `${billType} of ${amount} Rs is paid`;
       }
       const response = await axios.post(`/billpayment/${uniqueId}`, {
         billType, amount, billDescription

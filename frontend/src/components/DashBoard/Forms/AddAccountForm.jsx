@@ -64,17 +64,15 @@ const AddAccountForm = () => {
       setIfsc('');
     }
   return (
-    <div className="divFlex">
-       <div>
-          <h2>Images</h2>
-       </div>
-       <div>
-       <form className="styled-form" onSubmit={clickSubmit}>
+    <div >
+       <div className="styled-form">
+        <h1 className='subheading'>ADD BANK ACCOUNT</h1>
+       <form  onSubmit={clickSubmit}>
          <label >Bank Name:</label>
          <input type="text" id="bankname" name="bankname" value={bankName} onChange={changedBankName} placeholder='Bank Abbreviation'/>
-         <label >BankAccount:</label>
+         <label >Bank Account:</label>
          <input type="text" id="accountNo" name="accountNo" value={accountNo} onChange={changedBankAccount} placeholder='12 digit Account Number'/>
-         <label >IFSC CODE:</label>
+         <label >IFSC Code:</label>
          <input type="text" id="ifsc" name="ifsc" value={ifsc} onChange={changedIfsc} placeholder='Enter Ifsc 6-letter Code'/>
 
          {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}

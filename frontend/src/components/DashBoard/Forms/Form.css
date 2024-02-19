@@ -2,6 +2,7 @@
 .divFlex{
    display: flex;
    justify-content: space-evenly;
+   
 }
 .styled-form {
     
@@ -11,6 +12,8 @@
     box-shadow: 0 0 10px black;
     border: 2px solid black;
     margin: 0 auto; /* Center the form */
+    background-color: rgb(149, 186, 188);
+
   
     @media (max-width: 400px) {
       width: 90%;
@@ -19,6 +22,8 @@
     label {
       display: block;
       margin-bottom: 8px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: larger;
     }
   
     input {
@@ -26,26 +31,32 @@
       padding: 8px;
       margin-bottom: 16px;
       box-sizing: border-box;
+      border:solid 1px #000000;
+      border-radius: 10px;
     }
     select {
       width: 100%;
       padding: 8px;
       margin-bottom: 16px;
       box-sizing: border-box;
+      border:solid 1px #000000;
+      border-radius: 10px;
     }
   
     button {
-      background-color: #cfc8c8;
-      color: #343434;
+      background-color:  rgb(105, 123, 125);
+      color: #0f0f0f;
       padding: 10px;
-      border: black;
+      border:solid 1px #000000;
       border-radius: 5px;
       cursor: pointer;
       width: 100%;
+     
   
     }
-    button :hover {
-        background-color: rgb(246, 249, 249);
+    button:hover {
+        background-color: rgb(89, 94, 94);
+        color: aliceblue;
     }
 }
   

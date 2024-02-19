@@ -37,8 +37,9 @@ const BeneficiaryTable = () => {
   };
 
   return (
-    <div className="table-container">
-      <table className="custom-table">
+    <div>
+        <h1 className='subheading'>LIST OF BENEFICIARY</h1>
+      <table className="custom-table table-container">
         <thead>
           <tr>
             <th>Name</th>

@@ -4,16 +4,23 @@ import Navbar from '../../Header/Navbar'
 import Footer from '../../Footer/Footer'
 import AddMoneyForm from '../Forms/AddMoneyForm'
 import BankAccountTable from '../Tables/BankAccountTable';
+import NavbarLand from '../../Header/NavbarLand';
 
 function AddMoney() {
+  const isLoggedIn = localStorage.getItem("uniqueId") !== null;
   return (
-    <div className='add-money'> 
-      <Navbar/>
-      <h1>Bank Account List</h1>
-      <BankAccountTable/>        
-      <h1>ADD MONEY</h1>
-      <AddMoneyForm/>   
-      <br/>        
+    <div>
+      {isLoggedIn ? <Navbar /> : <NavbarLand />} 
+      {/* <h1 className='heading'>Add Money</h1> */}
+      <div className='flexed'>
+      <div className='boxed' >
+         <h1 className='subheading'>BANK ACCOUNT LIST</h1>
+         <BankAccountTable/>        
+      </div>
+      <div >
+          <AddMoneyForm/>   
+      </div>
+      </div>
       <Footer/>
     </div>
   );

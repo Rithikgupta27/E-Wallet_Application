@@ -39,6 +39,9 @@ const SendMoneyForm = () => {
         const response = await axios.post(`/sendMoney/${sourceMobileNo}/${recieverMobileNo}/${amount}/${uniqueId}`);
         console.log(response.data);
         setSuccessMessage("Amount transfer successful.");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
     } catch (error) {
         throw error;
     }
@@ -70,8 +73,13 @@ const clickSubmit = async (event) => {
 
 
   return (
-    <div>
-      <form className="styled-form" onSubmit={clickSubmit}>
+    <div className='flexed'>
+    <div className='boxed'>
+         <h2>images</h2>
+    </div>
+    <div >
+      <form className="styled-form"  onSubmit={clickSubmit}>
+      <h1 className='subheading'>Send Money</h1>
       <label >Sender PhoneNumber:</label>
       <input type="text" id="sMobileNo" name="sMobileNo" value={sourceMobileNo} readOnly placeholder={sourceMobileNo}/>
       <label >Reciever PhoneNumber:</label>
@@ -82,6 +90,7 @@ const clickSubmit = async (event) => {
       {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
       <button type="submit">PAY</button>
     </form>
+    </div>
     </div>
   )
 }

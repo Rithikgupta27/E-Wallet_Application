@@ -34,18 +34,15 @@ const PayBillForm = () => {
       setSuccessMessage("Bill paid Successfully ..")
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 1000);
     };
 
     // fecth bills shown in transactions
 
     return (
-        <div className="divFlex">
-            <div>
-                <h2>Images</h2>
-            </div>
             <div>
                 <form className="styled-form" onSubmit={clickSubmit}>
+                    <h1 className='subheading'>PAY BILLS</h1>
                     <label>Bill Type:</label>
                     <select onChange={changedBillType} value={billType}>
                         <option value="">Select Bill Type</option>
@@ -64,7 +61,6 @@ const PayBillForm = () => {
                     {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
                     <button type="submit">Add Bill Payment</button>
                 </form>
-            </div>
         </div>
     );
 };

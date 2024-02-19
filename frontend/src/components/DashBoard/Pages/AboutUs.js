@@ -1,12 +1,14 @@
 import React from 'react'
 import Navbar from '../../Header/Navbar'
 import Footer from '../../Footer/Footer'
+import NavbarLand from '../../Header/NavbarLand';
 
 const AboutUs = () => {
+  const isLoggedIn = localStorage.getItem("uniqueId") !== null;
   return (
     <div>
-      <Navbar/>
-      <h1 className='aboutus'>About Us</h1>
+      {isLoggedIn ? <Navbar /> : <NavbarLand />} 
+      <h1 className='heading'>About Us</h1>
       <Footer/>
     </div>
   )
