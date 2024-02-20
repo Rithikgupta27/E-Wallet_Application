@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import "./Profile.css";
-import AuthService from '../../../services/Auth/AuthService';
+// import AuthService from '../../../services/Auth/AuthService';
 import Navbar from '../../Header/Navbar';
 import Footer from '../../Footer/Footer';
 import axios from '../../../services/API/axios';
+import NavbarLand from '../../Header/NavbarLand';
 
 function Profile() {
     const [firstName,setFirstName] = useState("");
@@ -33,39 +34,40 @@ function Profile() {
         getCustomerDetails(uniqueId);
     },[])
     
-       return (
-    <div >
-        <Navbar/>
+    const isLoggedIn = localStorage.getItem("uniqueId") !== null;
+    return (
+      <div>
+      {isLoggedIn ? <Navbar /> : <NavbarLand />} 
        <div class="profile-container">
-    <div class="profile-info">
-      <h1 className='heading'>User Profile</h1>
-        <div class=" containerInside texted">
-              <table >
-                <tr>
-                    <th>First Name:</th>
-                    <td>{firstName}</td>
-                </tr>
-                <tr>
-                    <th>Last Name:</th>
-                    <td>{lastName}</td>
-                </tr>
-                <tr>
-                    <th>Mobile Number:</th>
-                    <td>{mobile}</td>
-                </tr>
-                <tr>
-                    <th>Wallet Id:</th>
-                    <td>{wallet}</td>
-                </tr>
-                <tr>
-                    <th>Date Of Birth:</th>
-                    <td>{dob}</td>
-                </tr>
-            </table>
+        <div class="profile-info">
+          <h1 className='heading'>User Profile</h1>
+            <div class=" containerInside texted">
+                  <table >
+                    <tr>
+                        <th>First Name:</th>
+                        <td>{firstName}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name:</th>
+                        <td>{lastName}</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile Number:</th>
+                        <td>{mobile}</td>
+                    </tr>
+                    <tr>
+                        <th>Wallet Id:</th>
+                        <td>{wallet}</td>
+                    </tr>
+                    <tr>
+                        <th>Date Of Birth:</th>
+                        <td>{dob}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
-  </div>
-  <Footer/>
+      </div>
+      <Footer/>
     </div>
   );
 

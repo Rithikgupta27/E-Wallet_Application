@@ -21,10 +21,10 @@ const AuthService = {
   },
   logoutUser: async (uniqueId) => {
     try {
-      const response = await axios.patch(`/logout/${uniqueId}`);
+      // const response = await axios.patch(`/logout/${uniqueId}`);
       localStorage.removeItem('uniqueId');
       localStorage.removeItem('kyc');
-      return response.data;
+      // return response.data;
     } catch (error) {
         // console.error('Error during logout:', error);
         // throw new Error('Logout failed. Please try again.');

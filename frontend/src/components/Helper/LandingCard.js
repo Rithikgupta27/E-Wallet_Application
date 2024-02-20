@@ -1,5 +1,5 @@
 import React from 'react';
-import './LandingCard.css';
+// import './LandingCard.css';
 import CardItem from './CardItem';
 
 function LandingCard() {
@@ -9,37 +9,37 @@ function LandingCard() {
         <div className='cards__wrapper'>
           <ul className='cards__items'>
             <CardItem
-              src='images/img-9.jpg'
-              text='Our expert technicians will inspect your car and ensure that the best car service is provided to you.'
-              label='Trending'
-              path='/services'
+              src='images/INDIA-PAYTM.jpg'
+              text='Paytm deadline extended to March 15: Who can use UPI, wallet, FASTag, banking services, RBI'
+              label='TRENDING'
+              path='https://economictimes.indiatimes.com/wealth/save/paytm-deadline-extended-to-march-15-who-can-use-upi-wallet-fastag-banking-services-rbi-releases-faqs/articleshow/107756249.cms'
+              
             />
             <CardItem
-              src='images/img-2.jpg'
-              text='Vehicle diagnosis by our expert'
-              label='Trending'
-              path='/services'
+              src='images/fast.jpg'
+              text='Paytm FASTag port: How can you port account to other banks. Details'
+              label='TRENDING'
+              path='https://www.hindustantimes.com/business/paytm-fastag-port-how-can-you-port-account-to-other-banks-details-101708329598767.html?utm_source=taboola_widget&utm_medium=taboola_widget&utm_campaign=article_detail_page'
             />
           </ul>
           <ul className='cards__items'>
             <CardItem
-              src='images/img-3.jpg'
-              text=' Tire and wheel services such as wheel alignments, tire balancing, and flat tire repairs.' 
-              // This can include washing, waxing, polishing, and vacuuming the interior.'
-              label='WHEEL SERVICE'
+              src='images/sbi.jpg'
+              text=' SBI Card shares up 0.55% as Nifty gain'
+              label='LATEST'
               path='/services'
             />
             <CardItem
-              src='images/img-4.jpg'
-              text='Full vehicle diagnosis using different tools'
-              label='VEHICLE DIAGNOSIS'
-              path='/products'
+              src='images/kotak.jpg'
+              text='In leadership rejig at Kotak Mahindra, KVS Manian named joint MD, Shanti Ekambaram deputy MD'
+              label='LATEST'
+              path='/https://www.hindustantimes.com/business/another-blow-for-paytm-jefferies-drops-ratings-amid-challenges-101708315615971.html'
             />
             <CardItem
-              src='images/img-8.jpg'
-              text='Full vehicle check-up'
-              label='FULL CHECK-UP'
-              path='/sign-up'
+              src='images/news2.jpg'
+              text='Stanchart to continue focus on wealth management in India: Senior executive'
+              label='LATEST'
+              path='https://www.business-standard.com/finance/news/stanchart-to-continue-focus-on-wealth-management-in-india-senior-executive-124021900468_1.html'
             />
           </ul>
         </div>

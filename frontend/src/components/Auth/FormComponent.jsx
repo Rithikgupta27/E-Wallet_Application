@@ -46,7 +46,7 @@ const FormComponent = () => {
         currentComponent = null;
     }
   
-    return <div>{currentComponent}</div>;
+    return <div style={{border : '1px ', borderColor : 'black'}}>{currentComponent}</div>;
 }
 
 export default FormComponent

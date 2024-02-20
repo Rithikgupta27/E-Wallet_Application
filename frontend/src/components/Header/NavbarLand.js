@@ -37,7 +37,7 @@ function NavbarLand() {
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            {/*
+            
             <li className='nav-item'>
 
               <Link to='/' className='nav-links' onClick={closeMobileMenu}>
@@ -62,18 +62,18 @@ function NavbarLand() {
                 About Us
               </Link>
             </li>
-             */}
+            
             <li>
               <Link 
               to='/auth'
               className='nav-links-mobile'
                 onClick={closeMobileMenu}
-              >
-                
+              >     
+              LogIn          
               </Link>
             </li>
-          {button && <ButtonLogin buttonStyle='btn--outline'>LogIn</ButtonLogin>}
           </ul> 
+          {button && <ButtonLogin buttonStyle='btn--outline'>LogIn</ButtonLogin>}
         </div>
       </nav>
     </>

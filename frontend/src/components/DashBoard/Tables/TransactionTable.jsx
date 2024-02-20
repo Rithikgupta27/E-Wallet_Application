@@ -55,7 +55,7 @@ const TransactionTable = () => {
       <td>{item.transactionType}</td>
       <td>Rs. {item.amount}</td>
       <td> {item.description}</td>
-      <td>{item.transactionDate}</td>
+      <td>{(item.transactionDate).slice(0, -7)}</td>
      </tr>)):"No Transaction"}
      </table>
     </div>

@@ -23,6 +23,7 @@ const BeneficiaryTable = () => {
   };
 
   const removeBeneficiary = (bId) => {
+    
     const uniqueId = localStorage.getItem('uniqueId');
     axios.delete(`/beneficiary/${uniqueId}/${bId}`).then(
       (response) => {

@@ -41,6 +41,9 @@ const KycForm = (props) => {
       const kyc = localStorage.getItem("kyc")
       if (kyc == 1){
         setSuccessMessage("Kyc is done already");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
         return;
       }
       events.preventDefault();  
@@ -55,10 +58,13 @@ const KycForm = (props) => {
           setOtp('');
         }  catch{
           setErrorMessage("KYC failed or done already")
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         }
       }else{
         setErrorMessage("wrong OTP")
-        console.log("not working");
+        // console.log("not working");
       }
     }
   return (
