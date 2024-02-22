@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import "./Profile.css";
+<<<<<<< HEAD
 import AuthService from '../../../services/Auth/AuthService';
 import Navbar from '../../Header/Navbar';
 import Footer from '../../Footer/Footer';
 import axios from '../../../services/API/axios';
+=======
+// import AuthService from '../../../services/Auth/AuthService';
+import Navbar from '../../Header/Navbar';
+import Footer from '../../Footer/Footer';
+import axios from '../../../services/API/axios';
+import NavbarLand from '../../Header/NavbarLand';
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
 
 function Profile() {
     const [firstName,setFirstName] = useState("");
@@ -33,6 +41,7 @@ function Profile() {
         getCustomerDetails(uniqueId);
     },[])
     
+<<<<<<< HEAD
        return (
     <div >
         <Navbar/>
@@ -66,6 +75,42 @@ function Profile() {
     </div>
   </div>
   <Footer/>
+=======
+    const isLoggedIn = localStorage.getItem("uniqueId") !== null;
+    return (
+      <div>
+      {isLoggedIn ? <Navbar /> : <NavbarLand />} 
+       <div class="profile-container">
+        <div class="profile-info">
+          <h1 className='heading'>User Profile</h1>
+            <div class=" containerInside texted">
+                  <table >
+                    <tr>
+                        <th>First Name:</th>
+                        <td>{firstName}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name:</th>
+                        <td>{lastName}</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile Number:</th>
+                        <td>{mobile}</td>
+                    </tr>
+                    <tr>
+                        <th>Wallet Id:</th>
+                        <td>{wallet}</td>
+                    </tr>
+                    <tr>
+                        <th>Date Of Birth:</th>
+                        <td>{dob}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+      </div>
+      <Footer/>
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
     </div>
   );
 

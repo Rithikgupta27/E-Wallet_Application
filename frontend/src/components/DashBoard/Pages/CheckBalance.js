@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../Header/Navbar'
 import Footer from '../../Footer/Footer'
 import axios from '../../../services/API/axios';
+<<<<<<< HEAD
+=======
+import NavbarLand from '../../Header/NavbarLand';
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
 
 const CheckBalance = () => {
   const [balance, setBalance] = useState('NaN');
@@ -23,9 +27,16 @@ const CheckBalance = () => {
     getBalance()
   },[]);
 
+<<<<<<< HEAD
   return (
     <div>
       <Navbar/>
+=======
+  const isLoggedIn = localStorage.getItem("uniqueId") !== null;
+  return (
+    <div>
+      {isLoggedIn ? <Navbar /> : <NavbarLand />} 
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
       <br/>
       <div className='checkBalance'>
          <h1 className='subheading'>CHECK BALANCE</h1>

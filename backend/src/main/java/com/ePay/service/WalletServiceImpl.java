@@ -81,6 +81,11 @@ public class WalletServiceImpl implements WalletService {
 
 				bank.setBalance(revisedBankBalance);
 				wallet.setBalance(revisedwalletbalance);
+<<<<<<< HEAD
+=======
+
+				// add transaction
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
 				Transaction transaction = new Transaction();
 				transaction.setAmount(amount);
 				transaction.setDescription("Money Recived from Bank XXXX" + bank.getAccountNo().substring(8));
@@ -89,6 +94,10 @@ public class WalletServiceImpl implements WalletService {
 				transaction.setTransactionType("Recived Money");
 				transaction.setWallet(wallet);
 				tDao.save(transaction);
+<<<<<<< HEAD
+=======
+
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
 				cDao.save(customer);
 				return customer.getWallet();
 
@@ -154,6 +163,10 @@ public class WalletServiceImpl implements WalletService {
 						Long revisedBankBalanceREE = transforee.getWallet().getBalance() + amount;
 						transferor.getWallet().setBalance(revisedBankBalanceROR);
 						transforee.getWallet().setBalance(revisedBankBalanceREE);
+<<<<<<< HEAD
+=======
+
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
 						// add transaction
 						Transaction transaction = new Transaction();
 						transaction.setAmount(amount);
@@ -163,6 +176,10 @@ public class WalletServiceImpl implements WalletService {
 						transaction.setTransactionType("Send Money");
 						transaction.setWallet(transferor.getWallet());
 						tDao.save(transaction);
+<<<<<<< HEAD
+=======
+
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
 						cDao.save(transforee);
 						cDao.save(transferor);
 						return transferor.getWallet();

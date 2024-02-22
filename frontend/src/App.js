@@ -15,6 +15,10 @@ import TransactionHistory from './components/DashBoard/Pages/TransactionHistory'
 import Kyc from './components/DashBoard/Pages/Kyc';
 import Profile from './components/DashBoard/Pages/Profile';
 import AddBankAccount from './components/DashBoard/Pages/AddBankAccount';
+<<<<<<< HEAD
+=======
+import TermsAndConditions from './components/DashBoard/Pages/TermsAndConditions';
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
 
 const App = () => {
   return (   
@@ -35,6 +39,11 @@ const App = () => {
           <Route path='/kyc' element={<Kyc />} />
           <Route path='/user-profile' element={<Profile/>}/>
           <Route path='/add-bank-account' element={<AddBankAccount />} /> 
+<<<<<<< HEAD
+=======
+          <Route path='/terms-and-conditions' element={<TermsAndConditions/>}></Route>
+          
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
         </Routes>
       </Router>
     </div>

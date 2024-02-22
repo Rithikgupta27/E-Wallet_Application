@@ -25,8 +25,16 @@ const PayBillForm = () => {
     const clickSubmit = (event) => {
       // validations
       event.preventDefault();
+<<<<<<< HEAD
       if (!billType || amount == 0 ){
         setErrorMessage("Fill correct information");
+=======
+      if (!billType || amount <= 0 ){
+        setErrorMessage("Fill correct information");
+        setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
         return;
       }
       const uniqueId = localStorage.getItem('uniqueId');

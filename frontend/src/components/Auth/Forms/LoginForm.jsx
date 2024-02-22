@@ -54,7 +54,11 @@ const LoginForm = ({ switchToForgotPassword, switchToSignUp }) => {
     
   
     return (
+<<<<<<< HEAD
       <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+=======
+      <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 border-black">
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Log in to your account

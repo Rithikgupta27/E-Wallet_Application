@@ -1,6 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import AuthService from '../../../services/Auth/AuthService';
+<<<<<<< HEAD
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
 
 const RegistrationForm = ({ signUpData, switchToLoginForm }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -197,7 +201,11 @@ const RegistrationForm = ({ signUpData, switchToLoginForm }) => {
         <div>
           <input type="checkbox" checked={agreedToTerms} onChange={handleCheckboxChange} className="mr-2" />
           <label className='text-gray-900'>
+<<<<<<< HEAD
             I agree to the <a className="text-blue-500 hover:underline">Terms of Service</a> and <a className="text-blue-500 hover:underline">Privacy Policy</a>
+=======
+            I agree to the <a className="text-blue-500 hover:underline"><Link to='/terms-and-conditions'>Terms of Service</Link></a> and <a className="text-blue-500 hover:underline"><Link to='/terms-and-conditions'>Privacy Policy</Link></a>
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
           </label>
         </div>
         {errorMessage && <div className="text-red-500 mb-2">{errorMessage}</div>}

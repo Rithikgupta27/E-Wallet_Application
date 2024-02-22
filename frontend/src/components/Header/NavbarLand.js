@@ -37,7 +37,11 @@ function NavbarLand() {
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+<<<<<<< HEAD
             {/*
+=======
+            
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
             <li className='nav-item'>
 
               <Link to='/' className='nav-links' onClick={closeMobileMenu}>
@@ -62,18 +66,31 @@ function NavbarLand() {
                 About Us
               </Link>
             </li>
+<<<<<<< HEAD
              */}
+=======
+            
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
             <li>
               <Link 
               to='/auth'
               className='nav-links-mobile'
                 onClick={closeMobileMenu}
+<<<<<<< HEAD
               >
                 
               </Link>
             </li>
           {button && <ButtonLogin buttonStyle='btn--outline'>LogIn</ButtonLogin>}
           </ul> 
+=======
+              >     
+              LogIn          
+              </Link>
+            </li>
+          </ul> 
+          {button && <ButtonLogin buttonStyle='btn--outline'>LogIn</ButtonLogin>}
+>>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
         </div>
       </nav>
     </>
