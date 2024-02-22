@@ -15,11 +15,7 @@ const AddMoneyForm = () => {
         setBankAccount(events.target.value);
     }
     const submitHandler = (e) =>{
-<<<<<<< HEAD
-      if (!amount || !bankAccount){
-=======
       if (amount <= 0 || !amount || !bankAccount){
->>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
         setErrorMessage("All fields are mandatory..");
         return;
       }
@@ -37,11 +33,7 @@ const AddMoneyForm = () => {
           setSuccessMessage("Ammount Added Successfully");
           setTimeout(() => {
             window.location.reload();
-<<<<<<< HEAD
-          }, 1000);
-=======
           }, 2000);
->>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
         } ,(error)=>{
           console.log(error);
           // setErrorMessage("Transaction failed, No Ammount is deducted")
@@ -50,12 +42,9 @@ const AddMoneyForm = () => {
           }else{
             setErrorMessage("Transaction failed or Insufficient Balance")
           }
-<<<<<<< HEAD
-=======
           setTimeout(() => {
             window.location.reload();
           }, 2000);
->>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
       });
     }
   

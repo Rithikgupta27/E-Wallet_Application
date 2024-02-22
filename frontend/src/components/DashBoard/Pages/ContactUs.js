@@ -1,14 +1,5 @@
 import React from 'react'
 import '../../../App.css';
-<<<<<<< HEAD
-import Navbar from '../../Header/Navbar'
-import Footer from '../../Footer/Footer'
-const ContactUs = () => {
-  return (
-    <div>
-       <Navbar/>
-       <h1 className='heading'>Contact Us</h1>
-=======
 import "./ContactUs.css";
 import Navbar from '../../Header/Navbar'
 import Footer from '../../Footer/Footer'
@@ -107,7 +98,6 @@ const ContactUs = () => {
       </div>
           </div>
         </div>
->>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
       <Footer/>
     </div>
   )

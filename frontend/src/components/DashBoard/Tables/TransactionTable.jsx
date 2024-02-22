@@ -55,11 +55,7 @@ const TransactionTable = () => {
       <td>{item.transactionType}</td>
       <td>Rs. {item.amount}</td>
       <td> {item.description}</td>
-<<<<<<< HEAD
-      <td>{item.transactionDate}</td>
-=======
       <td>{(item.transactionDate).slice(0, -7)}</td>
->>>>>>> ef995c31af4ae7585260a585df05690c8ff17c0f
      </tr>)):"No Transaction"}
      </table>
     </div>
