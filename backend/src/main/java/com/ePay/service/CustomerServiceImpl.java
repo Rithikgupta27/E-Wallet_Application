@@ -75,6 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
 			CustomerSession cs = new CustomerSession();
 			cs.setCustomerId(customer.getCustomerId());
 			cs.setTimeStamp(LocalDateTime.now());
+			// to generate new session id when user login successfully
 			String key = RandomString.make(8);
 			cs.setUniqueId(key);
 
